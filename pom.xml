@@ -36,6 +36,42 @@
 
 
     <dependencies>
+
+        <!--solr-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-solr</artifactId>
+        </dependency>
+
+        <!-- 文件上传组件 -->
+        <dependency>
+            <groupId>org.csource.fastdfs</groupId>
+            <artifactId>fastdfs</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+
+        <!-- 引入freemarker包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!--微信支付sdk-->
+        <dependency>
+            <groupId>com.github.wxpay</groupId>
+            <artifactId>wxpay-sdk</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+
+        <!-- 后续整合es -->
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -178,11 +214,11 @@
         </dependency>
 
         <!--热部署-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-devtools</artifactId>-->
-        <!--<optional>true</optional>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- 集群下，启用session共享时，需打开 -->
         <!-- <dependency> <groupId>org.springframework.session</groupId> <artifactId>spring-session</artifactId>
             </dependency> -->

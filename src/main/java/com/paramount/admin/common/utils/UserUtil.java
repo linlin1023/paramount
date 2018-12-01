@@ -13,7 +13,6 @@ import java.util.List;
  * Created by szz on 2018/3/24 17:27.
  * Email szhz186@gmail.com
  */
-@SuppressWarnings("all")
 public class UserUtil {
     public static User getCurrentUser() {
         User user = (User) getSession().getAttribute(UserConstants.LOGIN_USER);

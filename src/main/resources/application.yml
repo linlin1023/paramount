@@ -39,6 +39,9 @@ spring:
     password: gentoo111
     protocol: smtp
     test-connection: false
+  data:
+      solr:
+        #host: http://127.0.0.1:8081/solr
 mybatis:
   type-aliases-package: com.paramount.admin.domain
   mapper-locations: classpath:/mybatis-mappers/*
@@ -53,7 +56,7 @@ log:
     root: info
     my: debug
   file: logs/admin-server.log
-  maxsize: 30MB
+  maxsize: 300MB
 token:
   expire:
     seconds: 86400
@@ -65,3 +68,9 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+FILE_SERVER_URL: http://192.168.209.133/
+appid: wx8397f8696b538317
+partner: 1473426802
+partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+notifyurl: http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify
+pagedir: pagedir

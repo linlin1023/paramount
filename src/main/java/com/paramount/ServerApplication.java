@@ -1,10 +1,13 @@
 package com.paramount;
 
+import org.apache.solr.client.solrj.SolrClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -30,5 +33,12 @@ public class ServerApplication {
 			container.addErrorPages(error401Page, error404Page, error500Page);
 		});
 	}
+	@Autowired
+    private SolrClient solrClient;
+
+	@Bean
+    public SolrTemplate getSolrTemplate(){
+	    return new SolrTemplate(solrClient);
+    }
 
 }
