@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/content")
+@RequestMapping("/shopping/content")
 public class ContentController {
 
 	@Autowired

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSON;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/shopping/cart")
 public class CartController {
 
 	@Autowired

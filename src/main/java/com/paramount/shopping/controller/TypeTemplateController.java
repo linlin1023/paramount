@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/typeTemplate")
+@RequestMapping("/shopping/typeTemplate")
 public class TypeTemplateController {
 
 	@Autowired

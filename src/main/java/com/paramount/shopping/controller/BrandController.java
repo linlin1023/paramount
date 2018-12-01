@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/brand")
+@RequestMapping("/shopping/brand")
 public class BrandController {
 
 	@Autowired
@@ -76,7 +76,7 @@ public class BrandController {
 		}
 	}
 	
-	@RequestMapping("/search")
+	@RequestMapping(value="/search")
 	public PageResult search(@RequestBody TbBrand brand, int page, int rows){
 		return brandService.findByPage(brand, page, rows);
 	}

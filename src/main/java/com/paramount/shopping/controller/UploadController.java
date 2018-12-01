@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
-@RequestMapping("/upload")
+@RequestMapping("/shopping/upload")
 public class UploadController {
 	
 	@Value("${FILE_SERVER_URL}")

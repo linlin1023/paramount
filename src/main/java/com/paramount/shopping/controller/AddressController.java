@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/shopping/address")
 public class AddressController {
 
 	@Autowired

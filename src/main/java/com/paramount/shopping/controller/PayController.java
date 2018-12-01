@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/pay")
+@RequestMapping("/shopping/pay")
 public class PayController {
 	
 	@Autowired

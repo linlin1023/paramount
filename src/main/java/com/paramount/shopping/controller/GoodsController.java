@@ -23,7 +23,7 @@ import com.alibaba.fastjson.JSON;
  *
  */
 @RestController
-@RequestMapping("/goods")
+@RequestMapping("/shopping/goods")
 public class GoodsController {
 
 	@Autowired

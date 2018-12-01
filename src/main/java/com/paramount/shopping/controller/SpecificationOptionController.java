@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/specificationOption")
+@RequestMapping("/shopping/specificationOption")
 public class SpecificationOptionController {
 
 	@Autowired

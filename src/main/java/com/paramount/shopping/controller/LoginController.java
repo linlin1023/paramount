@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController(value = "shoppingLoginController")
-@RequestMapping("/login")
+@RequestMapping("/shopping/login")
 public class LoginController {
 
 	@RequestMapping("/showName")

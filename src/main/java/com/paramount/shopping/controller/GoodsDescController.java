@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/goodsDesc")
+@RequestMapping("/shopping/goodsDesc")
 public class GoodsDescController {
 
 	@Autowired
