@@ -26,3 +26,8 @@
 3. 启动程序 nohup java -jar paramount.jar &
 4. 退出 ctrl + c
 5. 查看日志 tail -500f nohup.out
+
+### 请求的路径
+http://localhost:9000/shopping/admin/index.html
+http://localhost:9000/seller/admin/index.html
+http://localhost:9000/user/home-index.html
