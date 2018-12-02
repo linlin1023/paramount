@@ -26,5 +26,3 @@
 3. 启动程序 nohup java -jar paramount.jar &
 4. 退出 ctrl + c
 5. 查看日志 tail -500f nohup.out
-
-
