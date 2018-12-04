@@ -5,12 +5,21 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
+
+
 <title>登录</title>
 <link href="css/login.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+
+	<script type="text/javascript" src="js/base_translate.js"></script>
+
+	<script type="text/javascript" src="js/filter/T.js"> </script>
 </head>
 <body>
 
-	<div class="login">
+	<div class="login" ng-app="pinyougou">
 		<div class="message">后台管理系统</div>
 		<div id="darkbannerwrap"></div>
 
@@ -21,14 +30,13 @@
 			<input id="password" name="password" placeholder="密码" type="password"
 				autocomplete="off">
 			<hr class="hr15">
-			<button style="width: 100%;" type="submit" onclick="login(this)">登录</button>
+			<button style="width: 100%;" type="submit" onclick="login(this)">{{'100001'|T}}</button>
 			<hr class="hr20">
 			<span id="info" style="color: red"></span>
 		</form>
 
 
 	</div>
-
 </body>
 <script src="js/libs/jquery-2.1.1.min.js"></script>
 <script src="js/common.js"></script>
