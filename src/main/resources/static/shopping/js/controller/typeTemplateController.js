@@ -26,20 +26,25 @@ app.controller('typeTemplateController' ,function($scope,$controller,brandServic
 	$scope.findOne=function(id){				
 		typeTemplateService.findOne(id).success(
 			function(response){
-				$scope.entity= response;	
+				$scope.entity= response;
+				if($scope.entity.customAttributeItemsList == null)
+				    $scope.entity.customAttributeItemsList=[];
 				// eval()   JSON.parse();   
-				$scope.entity.brandIds = JSON.parse($scope.entity.brandIds);
+				//$scope.entity.brandIds = JSON.parse($scope.entity.brandIds);
 				
-				$scope.entity.specIds = JSON.parse($scope.entity.specIds);
+				//$scope.entity.specIds = JSON.parse($scope.entity.specIds);
 				
-				$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
+				//$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
 			}
 		);				
 	}
 	
 	//保存 
 	$scope.save=function(){				
-		var serviceObject;//服务层对象  				
+		var serviceObject;//服务层对象
+        $scope.entity.brandIds = "";
+        $scope.entity.specIds = "";
+        $scope.entity.customAttributeItems = "";
 		if($scope.entity.id!=null){//如果有ID
 			serviceObject=typeTemplateService.update( $scope.entity ); //修改  
 		}else{
@@ -100,12 +105,12 @@ app.controller('typeTemplateController' ,function($scope,$controller,brandServic
 	}
 	
 	//给扩展属性添加行
-	$scope.entity={customAttributeItems:[]};
+    $scope.entity = {customAttributeItemsList:[]}
 	$scope.addTableRow = function(){
-		$scope.entity.customAttributeItems.push({});
+		$scope.entity.customAttributeItemsList.push({});
 	}
 	
 	$scope.deleteTableRow = function(index){
-		$scope.entity.customAttributeItems.splice(index,1);
+		$scope.entity.customAttributeItemsList.splice(index,1);
 	}
 });	

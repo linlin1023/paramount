@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Product Edit</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+  
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- 富文本编辑器 -->
+	<link rel="stylesheet" href="../plugins/kindeditor/themes/default/default.css" />
+	<script charset="utf-8" src="../plugins/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
+    
+    <!-- 引入angular -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+	<!--引入国际化文件-->
+	<script type="text/javascript" src="/js/plugin/angular-translate/angular-translate.min.js"></script>
+	<script type="text/javascript" src="/js/plugin/angular-translate/angular-translate-loader-static-files.min.js"></script>
+	<script type="text/javascript" src="/js/base_translate.js"></script>
+	<script type="text/javascript" src="/js/filter/T.js"></script>
+
+    <script type="text/javascript" src="../js/service/goodsService.js"></script>  
+    <script type="text/javascript" src="../js/service/itemCatService.js"></script>  
+    <script type="text/javascript" src="../js/service/uploadService.js"></script>  
+    <script type="text/javascript" src="../js/service/typeTemplateService.js"></script>  
+    
+    <script type="text/javascript" src="../js/controller/baseController.js"></script>
+    <script type="text/javascript" src="../js/controller/goodsController.js"></script>
+    
+    
+</head>
+
+<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="goodsController" ng-init="selectItemCat1List();findOne()">
+
+            <!-- 正文区域 -->
+            <section class="content">
+
+                <div class="box-body">
+
+                    <!--tab页-->
+                    <div class="nav-tabs-custom">
+
+                        <!--tab头-->
+                        <ul class="nav nav-tabs">                       		
+                            <li class="active">
+                                <a href="#home" data-toggle="tab">{{'100053'|T}}</a>
+                            </li>   
+                            <li >
+                                <a href="#pic_upload" data-toggle="tab">{{'100054'|T}}</a>
+                            </li>    
+                            <li >
+                                <a href="#customAttribute" data-toggle="tab">{{'100055'|T}}</a>
+                            </li>     
+                            <li >
+                                <a href="#spec" data-toggle="tab" >{{'100056'|T}}</a>
+                            </li>                       
+                        </ul>
+                        <!--tab头/-->
+						
+                        <!--tab内容-->
+                        <div class="tab-content">
+
+                            <!--表单内容-->
+                            <div class="tab-pane active" id="home">
+                                <div class="row data-type">                                  
+								   <div class="col-md-2 title">{{'100057'|T}}</div>
+		                          
+		                           	  <div class="col-md-10 data">
+		                           	  	<table>
+		                           	  		<tr>
+		                           	  			<td>
+		                           	  				<select class="form-control" ng-model="entity.goods.category1Id" ng-options="item.id as item.name for item in itemCat1List">													
+		                           	  				</select>
+		                              			</td>
+		                              			<td>
+		                           	  				<select class="form-control select-sm"  ng-model="entity.goods.category2Id" ng-options="item.id as item.name for item in itemCat2List"></select>
+		                              			</td>
+		                              			<td>
+		                           	  				<select class="form-control select-sm" ng-model="entity.goods.category3Id" ng-options="item.id as item.name for item in itemCat3List"></select>
+		                              			</td>
+		                              			<td>
+		                           	  				TemplateID:{{entity.goods.typeTemplateId}}
+		                              			</td>
+		                           	  		</tr>
+		                           	  	</table>
+		                              	
+		                              </div>	                              
+		                          	  
+									
+		                           <div class="col-md-2 title">{{'100047'|T}}</div>
+		                           <div class="col-md-10 data">
+		                               <input type="text" ng-model="entity.goods.goodsName" class="form-control" placeholder="{{'100047'|T}}" value="">
+		                           </div>
+		                           
+		                           <div class="col-md-2 title">{{'100058'|T}}</div>
+		                           <div class="col-md-10 data">
+		                              <select class="form-control" ng-model="entity.goods.brandId" ng-options="item.id as item.text for item in typeTemplate.brandIds" ></select>
+		                           </div>
+		
+								   <div class="col-md-2 title">{{'100059'|T}}</div>
+		                           <div class="col-md-10 data">
+		                               <input type="text" ng-model="entity.goods.caption"  class="form-control"   placeholder="{{'100059'|T}}" value="">
+		                           </div>
+		                           
+		                           <div class="col-md-2 title">{{'100049'|T}}</div>
+		                           <div class="col-md-10 data">
+		                           	   <div class="input-group">
+			                          	   <span class="input-group-addon">¥</span>
+			                               <input type="text"ng-model="entity.goods.price"   class="form-control"  placeholder="{{'100049'|T}}" value="">
+		                           	   </div>
+		                           </div>
+		                           
+		                           <div class="col-md-2 title editer">{{'100060'|T}}</div>
+                                   <div class="col-md-10 data editer">
+                                       <textarea name="content" style="width:800px;height:400px;visibility:hidden;" ></textarea>
+                                   </div>
+		                           
+		                           <div class="col-md-2 title rowHeight2x">{{'100061'|T}}</div>
+		                           <div class="col-md-10 data rowHeight2x">
+		                               
+		                           	<textarea rows="4"  class="form-control"  ng-model="entity.goodsDesc.packageList" placeholder="{{'100061'|T}}"></textarea>
+		                           </div>
+		                           
+		                           <div class="col-md-2 title rowHeight2x">{{'100062'|T}}</div>
+		                           <div class="col-md-10 data rowHeight2x">
+		                               <textarea rows="4"  class="form-control"   ng-model="entity.goodsDesc.saleService"  placeholder="{{'100062'|T}}"></textarea>
+		                           </div>                        
+                                  
+                                    
+                                </div>
+                            </div>
+                            
+                            <!--图片上传-->
+                            <div class="tab-pane" id="pic_upload">
+                                <div class="row data-type">                                  
+								 <!-- 颜色图片 -->
+								 <div class="btn-group">
+					                 <button type="button" ng-click="image_entity={}" class="btn btn-default" title="{{'100008'|T}}" data-target="#uploadModal"  data-toggle="modal"  ><i class="fa fa-file-o"></i> {{'100008'|T}}</button>
+                             		                 
+					             </div>
+								 
+								 <table class="table table-bordered table-striped table-hover dataTable">
+					                    <thead>
+					                        <tr>
+					                            
+											    <th class="sorting">{{'100063'|T}}</th>
+											    <th class="sorting">{{'100054'|T}}</th>
+												<th class="sorting">{{'100015'|T}}</th>
+							            </thead>
+					                    <tbody>
+					                      <tr ng-repeat="pojo in entity.goodsDesc.itemImages">					                           
+									            <td>
+									            	{{pojo.color}}
+									            </td>
+									            <td>
+									           		<img alt="" src="{{pojo.url}}" width="100px" height="100px">	            	 
+									            </td>
+												 <td> <button type="button" ng-click="remove_iamge_entity($index)" class="btn btn-default" title="{{'100009'|T}}" ><i class="fa fa-trash-o"></i> {{'100009'|T}}</button></td>
+					                      </tr>
+					                    </tbody>
+								 </table> 
+								 {{entity.goodsDesc.itemImages}}
+                                </div>
+                            </div>
+                           
+                           
+                            <!--扩展属性-->
+                            <div class="tab-pane" id="customAttribute">
+                                <div class="row data-type">                                
+	                                <div ng-repeat="pojo in entity.goodsDesc.customAttributeItems">
+		                                <div class="col-md-2 title">{{pojo.text}}</div>
+				                        <div class="col-md-10 data">
+				                              <input class="form-control" ng-model="pojo.value" placeholder="{{pojo.text}}">	            	 
+				                        </div>
+	                                </div>       
+                                </div>
+                            </div>
+                      
+                            <!--规格-->
+                            <div class="tab-pane" id="spec">
+                            	<div class="row data-type">
+	                            	<div class="col-md-2 title">{{'100064'|T}}</div>
+			                        <div class="col-md-10 data">
+			                        	<input type="checkbox" ng-model="entity.goods.isEnableSpec" ng-true-value="1" ng-false-value="0">			                           
+			                        </div>
+                            	</div>
+                            	<p>
+                            	
+                            	<div ng-if="entity.goods.isEnableSpec == 1">
+                            	
+	                                <div class="row data-type">
+	                                
+		                                <div ng-repeat="pojo in specList">
+			                                <div class="col-md-2 title">{{pojo.text}}</div>
+					                        <div class="col-md-10 data">
+					                               
+					                            <span ng-repeat="option in pojo.options">
+					                            	<input ng-checked="checkAttributeValue(pojo.text,option.optionName)" ng-click="updateSpecAttribute($event,pojo.text,option.optionName);createItemList()" type="checkbox" >{{option.optionName}}					                            				                            	
+					                            </span>  	
+					                            	
+					                        </div>
+		                                </div>   
+		                                                                                  
+	                                </div>
+	                                <div class="row data-type">
+	                                	 <table class="table table-bordered table-striped table-hover dataTable">
+						                    <thead>
+						                        <tr>					                          
+												    <th class="sorting" ng-repeat="pojo in entity.goodsDesc.specificationItems">{{pojo.attributeName}}</th>
+												    <th class="sorting">{{'100049'|T}}</th>
+												    <th class="sorting">{{'100065'|T}}</th>
+												    <th class="sorting">{{'100066'|T}}</th>
+												    <th class="sorting">{{'100067'|T}}</th>
+											    </tr>
+								            </thead>
+						                    <tbody>
+						                      <tr ng-repeat="pojo in entity.itemList">					                           
+										            <td ng-repeat="item in entity.goodsDesc.specificationItems">
+										            	{{pojo.spec[item.attributeName]}}
+										            </td>
+										            <td>
+										           		<input class="form-control" ng-model="pojo.price" placeholder="{{'100049'|T}}">
+										            </td>
+										            <td>
+										            	<input class="form-control" ng-model="pojo.num"  placeholder="{{'100068'|T}}">
+										            </td>
+										            <td>
+										             	<input type="checkbox"  ng-model="pojo.status" ng-true-value="1" ng-false-value="0">
+										            </td>
+										            <td>
+										                <input type="checkbox"  ng-model="pojo.isDefault"  ng-true-value="1" ng-false-value="0">									             	
+										            </td>
+						                      </tr>
+											  
+						                    </tbody>
+									 	</table>
+								
+	                                </div>
+	                                
+	                            </div>
+                            </div>
+                            
+                        </div>
+                        <!--tab内容/-->
+						<!--表单内容/-->
+							 
+                    </div>
+                 	
+                 	
+                 	
+                 	
+                   </div>
+                  <div class="btn-toolbar list-toolbar">
+				      <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>{{'100069'|T}}</button>
+				      <button class="btn btn-default" >{{'100070'|T}}</button>
+				  </div>
+			
+            </section>
+            
+            
+<!-- 上传窗口 -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">{{'100071'|T}}</h3>
+		</div>
+		<div class="modal-body">							
+			
+			<table class="table table-bordered table-striped">
+		      	<tr>
+		      		<td>{{'100063'|T}}</td>
+		      		<td><input ng-model="image_entity.color" class="form-control" placeholder="{{'100063'|T}}" >  </td>
+		      	</tr>			    
+		      	<tr>
+		      		<td>{{'100054'|T}}</td>
+		      		<td>
+						<table>
+							<tr>
+								<td>
+								<input type="file" id="file" />				                
+					                <button class="btn btn-primary" type="button" ng-click="uploadFile()">
+				                   		{{'100072'|T}}
+					                </button>	
+					            </td>
+								<td>
+									<img  src="{{image_entity.url}}" width="200px" height="200px">
+								</td>
+							</tr>						
+						</table>
+		      		</td>
+		      	</tr>		      	
+			 </table>				
+			
+		</div>
+		<div class="modal-footer">						
+			<button class="btn btn-success"  data-dismiss="modal" ng-click="add_image_entity()" aria-hidden="true">{{'100018'|T}}</button>
+			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">{{'100019'|T}}</button>
+		</div>
+		{{image_entity}}
+	  </div>
+	</div>
+</div>
+
+            
+            <!-- 正文区域 /-->
+<script type="text/javascript">
+
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+	});
+
+</script>
+       
+</body>
+
+</html>

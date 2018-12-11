@@ -4,7 +4,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统</title>
+    <title>Paramount Manage System</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"> 
 	
@@ -14,9 +14,19 @@
     <link rel="stylesheet" href="../css/style.css">
 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js">  </script>
+
+    <!--引入国际化文件-->
+    <script type="text/javascript" src="/js/plugin/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="/js/plugin/angular-translate/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="/js/base_translate.js"></script>
+    <script type="text/javascript" src="/js/filter/T.js"></script>
+    <script type="text/javascript" src="/js/service/T.js"></script>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="pinyougou">
 
    <!-- 内容区域 -->
 
@@ -24,11 +34,11 @@
             <!-- 内容头部 -->
             <section class="content-header">
                 <h1>
-                    控制面板
-                    <small>首页</small>
+                    {{'100039'|T}}
+                    <small>{{'100040'|T}}</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+                    <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> {{'100040'|T}}</a></li>
                 </ol>
             </section>
             <!-- 内容头部 /-->
@@ -45,12 +55,12 @@
                             <div class="inner">
                                 <h3>150</h3>
 
-                                <p>新订单</p>
+                                <p>{{'100041'|T}}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="all-order-manage-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="all-order-manage-list.html" class="small-box-footer">{{'100042'|T}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -60,12 +70,12 @@
                             <div class="inner">
                                 <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                                <p>转化率</p>
+                                <p>{{'100043'|T}}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="all-ad-statistics-list.html" class="small-box-footer">{{'100042'|T}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -75,12 +85,12 @@
                             <div class="inner">
                                 <h3>44</h3>
 
-                                <p>新注册用户</p>
+                                <p>{{'100044'|T}}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="all-member-manage-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="all-member-manage-list.html" class="small-box-footer">{{'100042'|T}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -88,14 +98,14 @@
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>65</h3> <!--TODO-->
 
-                                <p>日PV</p>
+                                <p>{{'100045'|T}}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="all-ad-statistics-list.html" class="small-box-footer">{{'100042'|T}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

@@ -5,7 +5,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>类型模板管理</title>
+    <title>Type Template Manage</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
@@ -20,14 +20,22 @@
     <!-- 引入分页相关的JS和CSS -->
     <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
     <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
-    
-    <script type="text/javascript" src="../js/base_pagination.js"></script>
+
+	<!--引入国际化文件-->
+	<script type="text/javascript" src="/js/plugin/angular-translate/angular-translate.min.js"></script>
+	<script type="text/javascript" src="/js/plugin/angular-translate/angular-translate-loader-static-files.min.js"></script>
+	<script type="text/javascript" src="../js/base_pagination_translate.js"></script>
+	<script type="text/javascript" src="/js/filter/T.js"></script>
+
+
     <script type="text/javascript" src="../js/controller/baseController.js"></script>
     <script type="text/javascript" src="../js/service/typeTemplateService.js"></script>
     <script type="text/javascript" src="../js/service/brandService.js"></script>
     <script type="text/javascript" src="../js/service/specificationService.js"></script>
     <script type="text/javascript" src="../js/controller/typeTemplateController.js"></script>
-    
+
+
+
     <!-- 引入select2的相关的css和js -->
     <link rel="stylesheet" href="../plugins/select2/select2.css" />
     <link rel="stylesheet" href="../plugins/select2/select2-bootstrap.css" />
@@ -40,7 +48,7 @@
   <!-- .box-body -->
                 
                     <div class="box-header with-border">
-                        <h3 class="box-title">商品类型模板管理</h3>
+                        <h3 class="box-title"><!--商品类型模板管理-->{{'100117'|T}}</h3>
                     </div>
 
                     <div class="box-body">
@@ -52,17 +60,17 @@
                             <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建"  data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" ng-click="dele()" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+                                        <button type="button" class="btn btn-default" title="{{'100008'|T}}"  data-toggle="modal" data-target="#editModal" ng-click="entity={customAttributeItemsList:[]}"><i class="fa fa-file-o"></i> {{'100008'|T}}</button>
+                                        <button type="button" class="btn btn-default" ng-click="dele()" title="{{'100009'|T}}"><i class="fa fa-trash-o"></i> {{'100009'|T}}</button>
                                        
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                                        <button type="button" class="btn btn-default" title="{{'100010'|T}}" onclick="window.location.reload();"><i class="fa fa-refresh"></i> {{'100010'|T}}</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
-							                  分类模板名称：<input  >									
-									<button class="btn btn-default">查询</button>                                    
+							                  <!--分类模板名称-->{{'100118'|T}}：<input  type="text" ng-model="searchEntity.name">
+									<button class="btn btn-default" ng-click="reloadList()"><!--查询-->{{'100013'|T}}</button>
                                 </div>
                             </div>
                             <!--工具栏/-->
@@ -74,12 +82,12 @@
 			                              <th class="" style="padding-right:0px">
 			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
 			                              </th> 
-										  <th class="sorting_asc">模板ID</th>
-									      <th class="sorting">分类模板名称</th>
-									      <th class="sorting">关联品牌</th>
-									      <th class="sorting">关联规格</th>									     
-									      <th class="sorting">扩展属性</th>													     						
-					                      <th class="text-center">操作</th>
+										  <th class="sorting_asc"><!--模板ID-->{{'100119'|T}}</th>
+									      <th class="sorting"><!--分类模板名称-->{{'100118'|T}}</th>
+									      <th class="sorting"><!--关联品牌-->{{'100120'|T}}</th>
+									      <th class="sorting"><!--关联规格-->{{'100121'|T}}</th>
+									      <th class="sorting"><!--扩展属性-->{{'100122'|T}}</th>
+					                      <th class="text-center"><!--操作-->{{'100015'|T}}</th>
 			                          </tr>
 			                      </thead>
 			                      <tbody>
@@ -91,7 +99,7 @@
 									      <td>{{jsonToString(entity.specIds,'text')}}</td>									 
 									      <td>{{jsonToString(entity.customAttributeItems,'text')}}</td>		                                                                  
 		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" ng-click="findOne(entity.id)" data-toggle="modal" data-target="#editModal" >修改</button>                                           
+		                                 	  <button type="button" class="btn bg-olive btn-xs" ng-click="findOne(entity.id)" data-toggle="modal" data-target="#editModal" ><!--修改-->{{'100016'|T}}</button>
 		                                  </td>
 			                          </tr>
 			                      </tbody>
@@ -118,53 +126,53 @@
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">商品类型模板编辑</h3>
+			<h3 id="myModalLabel"><!--商品类型模板编辑-->{{'100123'|T}}</h3>
 		</div>
 		<div class="modal-body">							
 			
 			<table class="table table-bordered table-striped"  width="800px">
 		      	<tr>
-		      		<td>模板类型</td>
-		      		<td><input  class="form-control" placeholder="模板类型" ng-model="entity.name">  </td>
+		      		<td><!--模板类型-->{{'100118'|T}}</td>
+		      		<td><input  class="form-control" placeholder="{{'100118'|T}}" ng-model="entity.name">  </td>
 		      	</tr>			   
 		      	<tr>
-		      		<td>关联品牌</td>
+		      		<td><!--关联品牌-->{{'100120'|T}}</td>
 		      		<td>
 		      			<!-- 
 		      				ng-model:绑定下拉列表的id
 		      				select2-model:绑定下拉列表的id和value
 		      				config:代表的是数据的来源
 		      			 -->
-		      			<input select2 select2-model="entity.brandIds" config="brandList" multiple placeholder="支持多选哦" class="form-control" type="text"/>
+		      			<input select2 select2-model="entity.brandIdsList" config="brandList" multiple placeholder="multiple choices" class="form-control" />
 		      		</td>
 		      	</tr>
 		      	<tr>
-		      		<td>关联规格</td>
+		      		<td><!--关联规格-->{{'100121'|T}}</td>
 		      		<td>
-						<input select2 select2-model="entity.specIds" config="specList" multiple placeholder="支持多选哦" class="form-control" type="text"/>
+						<input select2 select2-model="entity.specIdsList" config="specList" multiple placeholder="multiple choices" class="form-control" />
 		      		</td>
 		      	</tr>	
 		      	
 		      	<tr>
-		      		<td>扩展属性</td>
+		      		<td><!--扩展属性-->{{'100122'|T}}</td>
 		      		<td>
 		      			<div class="btn-group">
-                             <button type="button" class="btn btn-default" ng-click="addTableRow()" title="新增扩展属性"><i class="fa fa-file-o"></i> 新增扩展属性</button>
+                             <button type="button" class="btn btn-default" ng-click="addTableRow()" title="{{'100125'|T}}"><i class="fa fa-file-o"></i> {{'100125'|T}}</button>
                                                                     
                         </div>
 						<table class="table table-bordered table-striped"  width="800px">
 							<thead>
 								<tr>
 								    <td><input type="checkbox" class="icheckbox_square-blue"></td>
-									<td>属性名称</td>									
-									<td>操作</td>
+									<td><!--属性名称-->{{'100126'|T}}</td>
+									<td><!--操作-->{{'100015'|T}}</td>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="pojo in entity.customAttributeItems">
+								<tr ng-repeat="pojo in entity.customAttributeItemsList">
 									<td><input type="checkbox" class="icheckbox_square-blue" ></td>
-									<td><input class="form-control" ng-model="pojo.text" placeholder="属性名称" ></td>
-									<td><button type="button" ng-click="deleteTableRow($index)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
+									<td><input class="form-control" ng-model="pojo.text" placeholder="{{'100126'|T}}" ></td>
+									<td><button type="button" ng-click="deleteTableRow($index)" class="btn btn-default" title="{{'100009'|T}}"><i class="fa fa-trash-o"></i> <!--删除-->{{'100009'|T}}</button></td>
 								</tr>
 							</tbody>
 						</table>	
@@ -176,8 +184,8 @@
 			
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()"><!--保存-->{{'100018'|T}}</button>
+			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><!--关闭-->{{'100019'|T}}</button>
 		</div>
 	  </div>
 	</div>

@@ -5,7 +5,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>运营商后台管理系统</title>
+    <title>Paramount Manage</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
   
@@ -33,10 +33,13 @@
 	
 	<!-- 引入angular的js -->
     <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <!--引入国际化文件-->
+    <script type="text/javascript" src="/js/plugin/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="/js/plugin/angular-translate/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="/js/base_translate.js"></script>
+    <script type="text/javascript" src="/js/filter/T.js"></script>
 
-    <script type="text/javascript" src="../js/base_translate.js.js"></script>
+
     <script type="text/javascript" src="../js/controller/indexController.js"></script>
     <script type="text/javascript" src="../js/service/loginService.js"></script>
  
@@ -51,9 +54,9 @@
             <!-- Logo -->
             <a href="index.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>品优购</b></span>
+                <span class="logo-mini"><b>{{'100073'|T}}</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>品优购-运营商后台</b></span>
+                <span class="logo-lg"><b>{{'100074'|T}}</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -71,7 +74,7 @@
                                 <span class="label label-success">4</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">你有4个邮件</li>
+                                <li class="header">{{'100076'|T}} 4 {{'100077'|T}}</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
@@ -82,10 +85,10 @@
                                                     <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
-                                                    系统消息
-                                                    <small><i class="fa fa-clock-o"></i> 5 分钟前</small>
+                                                    System notices
+                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
                                                 </h4>
-                                                <p>欢迎登录系统?</p>
+                                                <p>Welcome?</p>
                                             </a>
                                         </li>
                                         <!-- end message -->
@@ -95,10 +98,10 @@
                                                     <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
-                                                    团队消息
-                                                    <small><i class="fa fa-clock-o"></i> 2 小时前</small>
+                                                    Team notices
+                                                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
                                                 </h4>
-                                                <p>你有新的任务了</p>
+                                                <p>You have new notices</p>
                                             </a>
                                         </li>
                                         <li>
@@ -139,7 +142,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
+                                <li class="footer"><a href="#">{{'100085'|T}}</a></li>
                             </ul>
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
@@ -149,7 +152,7 @@
                                 <span class="label label-warning">10</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">你有10个新消息</li>
+                                <li class="header">{{'100083'|T}} 10 {{'100086'|T}} </li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
@@ -180,7 +183,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">View all</a></li>
+                                <li class="footer"><a href="#">{{'100087'|T}}</a></li>
                             </ul>
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
@@ -190,7 +193,7 @@
                                 <span class="label label-danger">9</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">你有9个新任务</li>
+                                <li class="header">{{'100083'|T}} 9 {{'100088'|T}}</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
@@ -257,7 +260,7 @@
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="#">View all tasks</a>
+                                    <a href="#">{{'100078'|T}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -274,17 +277,17 @@
 
                                     <p>
                                       {{loginName}}
-                                        <small>最后登录 11:20AM</small>
+                                        <small>{{'100079'|T}} 11:20AM</small>
                                     </p>
                                 </li>
                                 
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">修改密码</a>
+                                        <a href="#" class="btn btn-default btn-flat">{{'100089'|T}}</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="../logout" class="btn btn-default btn-flat">注销</a>
+                                        <a href="../logout" class="btn btn-default btn-flat">{{'100090'|T}}</a>
                                     </div>
                                 </li>
                             </ul>
@@ -307,7 +310,7 @@
                     </div>
                     <div class="pull-left info">
                         <p>{{loginName}}</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                        <a href="#"><i class="fa fa-circle text-success"></i> {{'100091'|T}}</a>
                     </div>
                 </div>
               
@@ -316,36 +319,37 @@
 
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu"  >
-                    <li class="header">菜单</li>
-                    <li id="admin-index"><a href="index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+                    <li class="header">{{'100092'|T}}</li>
+                    <li id="admin-index"><a href="index.html"><i class="fa fa-dashboard"></i> <span>{{'100093'|T}}</span></a></li>
 
 				    <!-- 菜单 -->
 				    <li class="treeview">
 				        <a href="#">
 				            <i class="fa fa-folder"></i> 
-				            <span>商家管理</span>
+				            <span>{{'100080'|T}}</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
 				        </a>
 				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-				                <a href="seller_1.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商家审核
-				                </a>
-				            </li>
-							<li id="admin-login">
-				                <a href="seller.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商家管理
-				                </a>
-				            </li>
+
+                            <li id="admin-login">
+                                <a href="goods_edit.html" target="iframe">
+                                    <i class="fa fa-circle-o"></i> {{'100081'|T}}
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="goods.html" target="iframe">
+                                    <i class="fa fa-circle-o"></i> {{'100082'|T}}
+                                </a>
+                            </li>
+
 				        </ul>                        
 				    </li>
 					<li class="treeview">
 				        <a href="#">
 				            <i class="fa fa-folder"></i> 
-				            <span>商品管理</span>
+				            <span>{{'100084'|T}}</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -354,36 +358,36 @@
 				
 				            <li id="admin-login">
 				                <a href="brand.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>品牌管理
+				                    <i class="fa fa-circle-o"></i>{{'100094'|T}}
 				                </a>
 				            </li>
 							<li id="admin-login">
 				                <a href="specification.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>规格管理
+				                    <i class="fa fa-circle-o"></i>{{'100095'|T}}
 				                </a>
 				            </li>							
 							<li id="admin-login">
 				                <a href="type_template.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>模板管理
+				                    <i class="fa fa-circle-o"></i>{{'100096'|T}}
 				                </a>
 				            </li>
 							<li id="admin-login">
 				                <a href="item_cat.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>分类管理
+				                    <i class="fa fa-circle-o"></i>{{'100097'|T}}
 				                </a>
 				            </li>
-							<li id="admin-login">
+							<!--<li id="admin-login">
 				                <a href="goods.html" target="iframe">
 				                    <i class="fa fa-circle-o"></i>商品审核
 				                </a>
-				            </li>
+				            </li>-->
 				        </ul>                        
 				    </li>
 					
 					<li class="treeview">
 				        <a href="#">
 				            <i class="fa fa-folder"></i> 
-				            <span>广告管理</span>
+				            <span>{{'100098'|T}}</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -392,12 +396,12 @@
 				
 				            <li id="admin-login">
 				                <a href="contentCategory.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告类型管理
+				                    <i class="fa fa-circle-o"></i>{{'100099'|T}}
 				                </a>
 				            </li>
 							<li id="admin-login">
 				                <a href="content.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告管理
+				                    <i class="fa fa-circle-o"></i>{{'100100'|T}}
 				                </a>
 				            </li>
 				        </ul>                        
@@ -421,9 +425,9 @@
         <!-- 底部导航 -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0.8
+                <b>{{'100101'|T}}</b> 1.0.8
             </div>
-            <strong>Copyright &copy; 2014-2017 <a href="http://www.itcast.cn">研究院研发部</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2018-2021 <a href="http://www.itcast.cn">paramount merchandize</a>.</strong> All rights reserved.
         </footer>
         <!-- 底部导航 /-->
 

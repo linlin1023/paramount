@@ -151,17 +151,20 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 			// 将specIds的字符串转成JSON的List<Map>
 			List<Map> list = JSON.parseArray(specIds, Map.class);
 			// 获得每条记录:
-			for (Map map : list) {
-				// 根据规格的ID 查询规格选项的数据:
-				// 设置查询条件:
-				TbSpecificationOptionExample example = new TbSpecificationOptionExample();
-				TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
-				criteria.andSpecIdEqualTo(new Long((Integer)map.get("id")));
-				
-				List<TbSpecificationOption> specOptionList = specificationOptionMapper.selectByExample(example);
-			
-				map.put("options", specOptionList);//{"id":27,"text":"网络",options:[{id：xxx,optionName:移动2G}]}
+			if(list != null){
+				for (Map map : list) {
+					// 根据规格的ID 查询规格选项的数据:
+					// 设置查询条件:
+					TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+					TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+					criteria.andSpecIdEqualTo(new Long((Integer)map.get("id")));
+
+					List<TbSpecificationOption> specOptionList = specificationOptionMapper.selectByExample(example);
+
+					map.put("options", specOptionList);//{"id":27,"text":"网络",options:[{id：xxx,optionName:移动2G}]}
+				}
 			}
+
 			return list;
 		}
 	

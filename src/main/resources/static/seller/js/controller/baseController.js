@@ -34,6 +34,8 @@ app.controller("baseController",function($scope){
 	// 定义方法：获取JSON字符串中的某个key对应值的集合
 	$scope.jsonToString = function(jsonStr,key){
 		// 将字符串转成JSOn:
+        if(jsonStr == null)
+            return "";
 		var jsonObj = JSON.parse(jsonStr);
 		
 		var value = "";

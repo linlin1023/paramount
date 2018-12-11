@@ -47,5 +47,16 @@ app.controller("baseController",function($scope){
 		}
 		return value;
 	}
+
+		// 从集合中查询某个名称的值是否存在
+    	$scope.searchObjectByKey = function(list,keyName,keyValue){
+    		for(var i=0;i<list.length;i++){
+    			if(list[i][keyName] == keyValue){
+    				return list[i];
+    			}
+    		}
+
+    		return null;
+    	}
 	
 });

@@ -3,6 +3,7 @@ package com.paramount.shopping.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.paramount.admin.domain.User;
 import com.paramount.shopping.domian.TbUser;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +22,9 @@ public class LoginController {
 	public Map showName(){
 		Map map = new HashMap();
 		// 获得用户名信息:
-		TbUser user = (TbUser) SecurityUtils.getSubject().getPrincipal();
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
 
-		map.put("username", user.getName());
+		map.put("username", user.getUsername());
 		
 		return map;
 	}

@@ -49,7 +49,9 @@ public class TypeTemplateController {
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbTypeTemplate typeTemplate){
 		try {
+			System.out.println(typeTemplate.toString());
 			typeTemplateService.add(typeTemplate);
+			System.out.println(typeTemplate.toString());
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +67,9 @@ public class TypeTemplateController {
 	@RequestMapping("/update")
 	public Result update(@RequestBody TbTypeTemplate typeTemplate){
 		try {
+			System.out.println(typeTemplate.toString());
 			typeTemplateService.update(typeTemplate);
+			System.out.println(typeTemplate.toString());
 			return new Result(true, "修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
