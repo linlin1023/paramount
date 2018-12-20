@@ -10,16 +10,15 @@ import java.util.List;
 
 /**
  * 商品的组合实体类
- * @author jt
  *
  */
 
 public class Goods implements Serializable{
 	
-	private TbGoods goods; // 商品信息
+	private TbGoods goods; // SPU商品信息
 	private TbGoodsDesc goodsDesc; // 商品扩展信息
-	
 	private List<TbItem> itemList; // SKU的列表信息
+
 	public TbGoods getGoods() {
 		return goods;
 	}

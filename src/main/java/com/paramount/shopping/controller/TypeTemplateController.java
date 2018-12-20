@@ -120,4 +120,7 @@ public class TypeTemplateController {
     public List<Map> findSpecList(Long id){
         return typeTemplateService.findSpecList(id);
     }
+
+    @RequestMapping("/selectTypeTemplateOptions")
+    public List<Map> selectTypeTemplateOptions(){ return typeTemplateService.selectTypeTemplateOptions();}
 }

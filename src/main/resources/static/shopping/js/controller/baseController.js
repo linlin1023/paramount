@@ -28,7 +28,25 @@ app.controller("baseController",function($scope){
 			var idx = $scope.selectIds.indexOf(id);
 			$scope.selectIds.splice(idx,1);
 		}
-		
+	}
+
+	$scope.allSelected = function($event){
+	// 复选框选中
+    		if($event.target.checked){
+    			// 向数组中添加元素
+    			$(".checkbox_io").prop("checked",true);
+    			angular.forEach($scope.list, function(value,key){$scope.selectIds.push(value.id)})
+    		}else{
+    			// 从数组中移除
+    			for(var entity in $scope.list){
+
+    			}
+    			angular.forEach($scope.list, function(value,key){
+    			        var idx = $scope.selectIds.indexOf(value.id);
+                    	$scope.selectIds.splice(idx,1);
+    			})
+    			$(".checkbox_io").removeAttr("checked");
+    		}
 	}
 	
 	// 定义方法：获取JSON字符串中的某个key对应值的集合

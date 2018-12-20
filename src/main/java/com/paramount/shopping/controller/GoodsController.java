@@ -63,7 +63,9 @@ public class GoodsController {
 			return new Result(false, "增加失败");
 		}
 	}
-	
+
+
+
 	/**
 	 * 修改
 	 * @param goods

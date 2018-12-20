@@ -26,10 +26,17 @@
     <script type="text/javascript" src="../js/controller/baseController.js"></script>
     <script type="text/javascript" src="../js/controller/itemCatController.js"></script>
     <script type="text/javascript" src="../js/service/itemCatService.js"></script>
+	<script type="text/javascript" src="../js/service/typeTemplateService.js"></script>
+
+	<!-- 引入select2的相关的css和js -->
+	<link rel="stylesheet" href="../plugins/select2/select2.css" />
+	<link rel="stylesheet" href="../plugins/select2/select2-bootstrap.css" />
+	<script src="../plugins/select2/select2.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/angular-select2.js">  </script>
     
 </head>
 
-<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="itemCatController" ng-init="findByParentId(0)">
+<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="itemCatController" ng-init="findByParentId(0);selectTypeTemplateOptions()">
   <!-- .box-body -->
                 
                     <div class="box-header with-border">
@@ -57,8 +64,8 @@
                             <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="{{'100008'|T}}" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> {{'100008'|T}}</button>
-                                        <button type="button" class="btn btn-default" title="{{'100009'|T}}" ><i class="fa fa-trash-o"></i> {{'100009'|T}}</button>
+                                        <button type="button" class="btn btn-default" title="{{'100008'|T}}" data-toggle="modal" data-target="#editModal" ng-click="entity={}" ><i class="fa fa-file-o"></i> {{'100008'|T}}</button>
+                                        <button type="button" class="btn btn-default" title="{{'100009'|T}}" ng-click="dele()"><i class="fa fa-trash-o"></i> {{'100009'|T}}</button>
                                         <button type="button" class="btn btn-default" title="{{'100010'|T}}" ><i class="fa fa-check"></i> {{'100010'|T}}</button>
                                        
                                     </div>
@@ -71,7 +78,7 @@
 			                      <thead>
 			                          <tr>
 			                              <th class="" style="padding-right:0px">
-			                                  <input type="checkbox" class="icheckbox_square-blue">
+			                                  <input type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)"><!---->
 			                              </th> 
 										  <th class="sorting_asc">{{'100104'|T}}</th>
 									      <th class="sorting">{{'100038'|T}}</th>
@@ -82,7 +89,7 @@
 			                      </thead>
 			                      <tbody>
 			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ></td>			                              
+			                              <td><input  type="checkbox" class="checkbox_io"  ng-click = "updateSelection($event,entity.id)"></td>
 				                          <td>{{entity.id}}</td>
 									      <td>{{entity.name}}</td>									    
 									      <td>
@@ -92,7 +99,7 @@
 			                                  <span ng-if="grade != 3">                          
 			                                      <button type="button" ng-click="setGrade(grade+1);selectList(entity);" class="btn bg-olive btn-xs" >{{'100106'|T}}</button>
 			                                  </span>     
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >{{'100016'|T}}</button>
+		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">{{'100016'|T}}</button>
 		                                  </td>
 			                          </tr>
 			                      </tbody>
@@ -123,24 +130,25 @@
 				<tr>
 		      		<td>{{'100108'|T}}</td>
 		      		<td>
-		      		   珠宝 >>  银饰
+		      		   {{entity_1.name}} >>  {{entity_2.name}}
 		      		</td>
 		      	</tr>
 		      	<tr>
 		      		<td><!--商品分类名称-->{{'100109'|T}}</td>
-		      		<td><input  class="form-control" placeholder="{{'100109'|T}}">  </td>
+		      		<td><input  class="form-control" placeholder="{{'100109'|T}}" ng-model="entity.name">  </td>
 		      	</tr>			  
 		      	<tr>
 		      		<td><!--类型模板-->{{'100110'|T}}</td>
-		      		<td>	      		
-		      			<input select2 config="options['type_template']" placeholder="{{'100110'|T}}" class="form-control" type="text"/>
-		      		</td>		      		      		
+		      		<td>
+						<!--select2-model="entity.typeId"-->
+						<input select2 ng-model="entity.typeId"  config="typeTemplateList"  placeholder="{{'100110'|T}}" class="form-control" />
+					</td>
 		      	</tr>		      	
 			 </table>				
 			
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">{{'100018'|T}}</button>
+			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">{{'100018'|T}}</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">{{'100019'|T}}</button>
 		</div>
 	  </div>

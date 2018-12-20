@@ -1,5 +1,5 @@
  //控制层 
-app.controller('itemCatController' ,function($scope,$controller   ,itemCatService){	
+app.controller('itemCatController' ,function($scope,$controller   ,itemCatService, typeTemplateService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -30,10 +30,12 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 			}
 		);				
 	}
-	
+
+	$scope.parentId = 0;
 	//保存 
 	$scope.save=function(){				
-		var serviceObject;//服务层对象  				
+		var serviceObject;//服务层对象
+		$scope.entity.parentId = $scope.parentId;
 		if($scope.entity.id!=null){//如果有ID
 			serviceObject=itemCatService.update( $scope.entity ); //修改  
 		}else{
@@ -43,7 +45,7 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 			function(response){
 				if(response.flag){
 					//重新查询 
-		        	$scope.reloadList();//重新加载
+		        	$scope.findByParentId($scope.parentId);//重新加载
 				}else{
 					alert(response.message);
 				}
@@ -58,7 +60,7 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 		itemCatService.dele( $scope.selectIds ).success(
 			function(response){
 				if(response.flag){
-					$scope.reloadList();//刷新列表
+					$scope.findByParentId($scope.parentId);//刷新列表
 					$scope.selectIds = [];
 				}						
 			}		
@@ -82,6 +84,8 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 		itemCatService.findByParentId(parentId).success(function(response){
 			$scope.list=response;
 		});
+		$(".icheckbox_square-blue").removeAttr("checked");
+		$scope.selectIds = [];
 	}
 	
 	// 定义一个变量记录当前是第几级分类
@@ -96,26 +100,28 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 		if($scope.grade == 1){
 			$scope.entity_1 = null;
 			$scope.entity_2 = null;
+			$scope.parentId = 0;
 		}
 		if($scope.grade == 2){
 			$scope.entity_1 = p_entity;
+			$scope.parentId = p_entity.id;
 			$scope.entity_2 = null;
 		}
 		if($scope.grade == 3){
 			$scope.entity_2 = p_entity;
+			$scope.parentId = p_entity.id;
 		}
 		
 		$scope.findByParentId(p_entity.id);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	$scope.typeTemplateList={data:[]}
+	$scope.selectTypeTemplateOptions = function(){
+	    typeTemplateService.selectTypeTemplateOptions().success(
+	        function(response){
+                  $scope.typeTemplateList = {data:response};
+            });
+	}
+
     
 });	

@@ -2,6 +2,7 @@ package com.paramount.shopping.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.paramount.shopping.domian.TbTypeTemplate;
 import com.paramount.shopping.domian.TbTypeTemplateExample;
@@ -30,4 +31,6 @@ public interface TbTypeTemplateMapper {
     int updateByPrimaryKeySelective(TbTypeTemplate record);
 
     int updateByPrimaryKey(TbTypeTemplate record);
+
+    List<Map> selectTypeTemplateOptions();
 }

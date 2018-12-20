@@ -1,5 +1,5 @@
  //控制层 
-app.controller('goodsController' ,function($scope,$controller,$location,typeTemplateService ,itemCatService,uploadService ,goodsService){	
+app.controller('goodsController' ,function($scope,$controller,$location,typeTemplateService ,itemCatService,uploadService ,goodsService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -149,6 +149,7 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	$scope.$watch("entity.goods.category1Id",function(newValue,oldValue){
 		itemCatService.findByParentId(newValue).success(function(response){
 			$scope.itemCat2List = response;
+			$scope.itemCat3List = null;
 		});
 	});
 	
@@ -160,11 +161,26 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	});
 	
 	// 查询模块ID
-	$scope.$watch("entity.goods.category3Id",function(newValue,oldValue){
+	$scope.$watch("entity.goods.category1Id",function(newValue,oldValue){
 		itemCatService.findOne(newValue).success(function(response){
 			$scope.entity.goods.typeTemplateId = response.typeId;
 		});
 	});
+
+	// 查询模块ID
+    	$scope.$watch("entity.goods.category2Id",function(newValue,oldValue){
+    		itemCatService.findOne(newValue).success(function(response){
+    			$scope.entity.goods.typeTemplateId = response.typeId;
+    		});
+    	});
+
+    	// 查询模块ID
+        	$scope.$watch("entity.goods.category3Id",function(newValue,oldValue){
+        		itemCatService.findOne(newValue).success(function(response){
+        			$scope.entity.goods.typeTemplateId = response.typeId;
+        		});
+        	});
+
 	
 	// 查询模板下的品牌列表:
 	$scope.$watch("entity.goods.typeTemplateId",function(newValue,oldValue){
@@ -186,6 +202,11 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 			$scope.specList = response;
 		});
 	});
+
+
+
+
+
 	
 	$scope.updateSpecAttribute = function($event,name,value){
 		// 调用封装的方法判断 勾选的名称是否存在:
@@ -253,4 +274,7 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 			}
 		});
 	}
+
+
+
 });	

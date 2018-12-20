@@ -1,11 +1,14 @@
 package com.paramount.shopping.service.impl;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.paramount.shopping.dao.TbItemCatMapper;
 import com.paramount.shopping.domian.TbItemCat;
 import com.paramount.shopping.domian.TbItemCatExample;
 import com.paramount.shopping.domian.response.PageResult;
 import com.paramount.shopping.service.ItemCatService;
+import org.apache.commons.lang3.builder.ToStringExclude;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -23,7 +26,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
-	
+
+
 	/**
 	 * 查询全部
 	 */
@@ -71,14 +75,24 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 	/**
 	 * 批量删除
+	 * 对于子分类级联删除
 	 */
 	@Override
 	public void delete(Long[] ids) {
 		for(Long id:ids){
 			itemCatMapper.deleteByPrimaryKey(id);
+			List<TbItemCat> childrenList = findByParentId(id);
+			Long[] idLists = childrenList.stream().map(a->a.getId()).toArray(size->new Long[size]);
+			delete(idLists);
+
 		}		
 	}
-	
+
+	@Test
+	public void testDelete(){
+		Long[] ids = {1307l};
+		delete(ids);
+	}
 	
 		@Override
 	public PageResult findPage(TbItemCat itemCat, int pageNum, int pageSize) {

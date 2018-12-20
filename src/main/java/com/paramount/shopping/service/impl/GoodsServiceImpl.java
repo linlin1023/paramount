@@ -77,7 +77,11 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		setItemList(goods);
 	}
-	
+
+
+
+
+
 	private void setItemList(Goods goods){
 		if("1".equals(goods.getGoods().getIsEnableSpec())){
 			// 启用规格

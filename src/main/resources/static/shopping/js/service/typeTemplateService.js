@@ -29,7 +29,10 @@ app.service('typeTemplateService',function($http){
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../typeTemplate/search.do?page='+page+"&rows="+rows, searchEntity);
 	}
-		this.findBySpecList=function(id){
-    		return $http.get('../../shopping/typeTemplate/findBySpecList.do?id='+id);
-    	}
+	this.findBySpecList=function(id){
+    	return $http.get('../../shopping/typeTemplate/findBySpecList.do?id='+id);
+    }
+    this.selectTypeTemplateOptions = function(){
+   	    return $http.get('../../shopping/typeTemplate/selectTypeTemplateOptions.do');
+   	}
 });
