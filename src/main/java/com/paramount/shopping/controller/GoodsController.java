@@ -57,10 +57,10 @@ public class GoodsController {
 	public Result add(@RequestBody Goods goods){
 		try {
 			goodsService.add(goods);
-			return new Result(true, "增加成功");
+			return new Result(true, "save successfully!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "增加失败");
+			return new Result(false, "save fail");
 		}
 	}
 
@@ -75,10 +75,10 @@ public class GoodsController {
 	public Result update(@RequestBody Goods goods){
 		try {
 			goodsService.update(goods);
-			return new Result(true, "修改成功");
+			return new Result(true, "save successfully ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "修改失败");
+			return new Result(false, "save failed");
 		}
 	}	
 	
@@ -127,10 +127,10 @@ public class GoodsController {
 //				}
 //			});
 			
-			return new Result(true, "删除成功"); 
+			return new Result(true, "delete succesfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "删除失败");
+			return new Result(false, "delete fail");
 		}
 	}
 	
@@ -194,10 +194,10 @@ public class GoodsController {
 				
 			}		
 			
-			return new Result(true, "修改状态成功"); 
+			return new Result(true, "status change successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "修改状态失败");
+			return new Result(false, "status change fail");
 		}
 	}
 	

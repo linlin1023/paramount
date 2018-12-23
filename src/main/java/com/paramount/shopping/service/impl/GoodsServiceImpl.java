@@ -70,17 +70,13 @@ public class GoodsServiceImpl implements GoodsService {
 		goods.getGoods().setAuditStatus("0"); // 设置审核的状态
 		
 		goodsMapper.insert(goods.getGoods()); // 插入商品信息
-		
+
 		goods.getGoodsDesc().setGoodsId(goods.getGoods().getId());
 		
 		goodsDescMapper.insert(goods.getGoodsDesc()); // 插入商品的扩展信息
 		
 		setItemList(goods);
 	}
-
-
-
-
 
 	private void setItemList(Goods goods){
 		if("1".equals(goods.getGoods().getIsEnableSpec())){
@@ -122,27 +118,37 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	private void setValue(Goods goods,TbItem item){
-		List<Map> imageList = JSON.parseArray(goods.getGoodsDesc().getItemImages(),Map.class);
-		if(imageList.size()>0){
-			item.setImage((String)imageList.get(0).get("url"));
+		if(goods.getGoodsDesc().getItemImages() !=null){
+			List<Map> imageList = JSON.parseArray(goods.getGoodsDesc().getItemImages(),Map.class);
+			if(imageList.size()>0){
+				item.setImage((String)imageList.get(0).get("url"));
+			}
 		}
-		
+
 		// 保存三级分类的ID:
-		item.setCategoryid(goods.getGoods().getCategory3Id());
+		Long categoryId = 0l;
+		if(goods.getGoods().getCategory3Id() != null && goods.getGoods().getCategory3Id() != 0 )
+			categoryId = goods.getGoods().getCategory3Id();
+		else if (goods.getGoods().getCategory2Id() != null && goods.getGoods().getCategory2Id() != 0 ){
+			categoryId = goods.getGoods().getCategory2Id();
+		}else if (goods.getGoods().getCategory1Id() != null && goods.getGoods().getCategory1Id() != 0 ) {
+			categoryId = goods.getGoods().getCategory1Id();
+		}
+		item.setCategoryid(categoryId);
+		TbItemCat itemCat = itemCatMapper.selectByPrimaryKey(item.getCategoryid());
+		item.setCategory(itemCat.getName());
+
 		item.setCreateTime(new Date());
 		item.setUpdateTime(new Date());
 		// 设置商品ID
-		item.setGoodsId(goods.getGoods().getId());
-		item.setSellerId(goods.getGoods().getSellerId());
-		
-		TbItemCat itemCat = itemCatMapper.selectByPrimaryKey(goods.getGoods().getCategory3Id());
-		item.setCategory(itemCat.getName());
-		
+		item.setGoodsId(goods.getGoods().getId());  //SPU id
+		//item.setSellerId(goods.getGoods().getSellerId()); // no need
+
 		TbBrand brand = brandMapper.selectByPrimaryKey(goods.getGoods().getBrandId());
 		item.setBrand(brand.getName());
 		
-		TbSeller seller = sellerMapper.selectByPrimaryKey(goods.getGoods().getSellerId());
-		item.setSeller(seller.getNickName());
+	//	TbSeller seller = sellerMapper.selectByPrimaryKey(goods.getGoods().getSellerId());
+	//	item.setSeller(seller.getNickName());
 	}
 	
 	/**

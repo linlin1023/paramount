@@ -65,7 +65,7 @@
 			                      <thead>
 			                          <tr>
 			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
+			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)">
 			                              </th> 
 										  <th class="sorting_asc"><!--规格ID-->{{'100113'|T}}</th>
 									      <th class="sorting"><!--规格名称-->{{'100112'|T}}</th>
@@ -74,7 +74,7 @@
 			                      </thead>
 			                      <tbody>
 			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>			                              
+			                              <td><input  type="checkbox"  class="checkbox_io" ng-click="updateSelection($event,entity.id)"></td>
 				                          <td>{{entity.id}}</td>
 									      <td>{{entity.specName}}</td>
 		                                  <td class="text-center">                                           
@@ -145,7 +145,7 @@
 		</div>
 		<div class="modal-footer">						
 			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">{{'100018'|T}}</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">{{'100018'|T}}</button>
+			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">{{'100019'|T}}</button>
 		</div>
 	  </div>
 	</div>

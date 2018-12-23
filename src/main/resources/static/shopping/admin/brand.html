@@ -62,7 +62,7 @@
 			<thead>
 			<tr>
 				<th class="" style="padding-right:0px">
-					<input id="selall" type="checkbox" class="icheckbox_square-blue">
+					<input id="selall" type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)">
 				</th>
 				<th class="sorting_asc">{{'100014'|T}}</th>
 				<th class="sorting">{{'100011'|T}}</th>
@@ -72,7 +72,7 @@
 			</thead>
 			<tbody>
 			<tr ng-repeat="entity in list">
-				<td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+				<td><input  type="checkbox" class="checkbox_io" ng-click="updateSelection($event,entity.id)"></td>
 				<td>{{entity.id}}</td>
 				<td>{{entity.name}}</td>
 				<td>{{entity.firstChar}}</td>

@@ -68,6 +68,8 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	$scope.save=function(){	
 		// 再添加之前，获得富文本编辑器中的内容。
 		$scope.entity.goodsDesc.introduction=editor.html();
+		$scope.entity.goodsDesc.itemImages = JSON.stringify($scope.entity.goodsDesc.itemImages);
+
 		var serviceObject;//服务层对象  				
 		if($scope.entity.goods.id!=null){//如果有ID
 			serviceObject=goodsService.update( $scope.entity ); //修改  
@@ -263,7 +265,7 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	}
 	
 	// 显示状态
-	$scope.status = ["未审核","审核通过","审核未通过","关闭"];
+	$scope.status = ["未审核","审核通过","审核未通过","关闭"];//下标显示
 	
 	$scope.itemCatList = [];
 	// 显示分类:
@@ -276,5 +278,13 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	}
 
 
+	// 假设定义一个查询的实体：searchEntity, page当前页码，rows一页有几条纪录
+	$scope.search = function(page,rows){
+		// 向后台发送请求获取数据:
+		goodsService.search(page,rows,$scope.searchEntity).success(function(response){
+			$scope.paginationConf.totalItems = response.total; //total item number
+			$scope.list = response.rows;
+		});
+	}
 
 });	

@@ -53,7 +53,7 @@
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
                                         <a href="goods_edit.html"  class="btn btn-default">{{'100008'|T}}</a>
-                                        <button type="button" class="btn btn-default" title="{{'100009'|T}}" ><i class="fa fa-trash-o"></i> {{'100009'|T}}</button>
+                                        <button type="button" class="btn btn-default" title="{{'100009'|T}}" ng-click="dele()"><i class="fa fa-trash-o"></i> {{'100009'|T}}</button>
                                         <!--<button type="button" class="btn btn-default" title="提交审核" ><i class="fa fa-check"></i> 提交审核</button>-->
                                         <!--<button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
                                         -->
@@ -63,7 +63,7 @@
                             </div>
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
-                                  		<!--状态：<select ng-model="searchEntity.auditStatus">
+                   <!--               		状态：<select ng-model="searchEntity.auditStatus">
                                          	<option value="">全部</option>      
                                          	<option value="0">未申请</option>    
                                          	<option value="1">审核通过</option>    
@@ -81,7 +81,7 @@
 			                      <thead>
 			                          <tr>
 			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
+			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)">
 			                              </th> 
 										  <th class="sorting_asc">{{'100048'|T}}</th>
 									      <th class="sorting">{{'100047'|T}}</th>
@@ -89,20 +89,20 @@
 									      <th class="sorting">{{'100050'|T}}</th>
 									      <th class="sorting">{{'100051'|T}}</th>
 									      <th class="sorting">{{'100052'|T}}</th>
-									  <!--    <th class="sorting">{{'100030'|T}}</th>-->
+									     <!-- <th class="sorting">{{'100030'|T}}</th>-->
 					                      <th class="text-center">{{'100015'|T}}</th>
 			                          </tr>
 			                      </thead>
 			                      <tbody>
 			                          <tr ng-repeat="entity in list">
-			                              <td><input  type="checkbox"></td>			                              
+			                              <td><input  type="checkbox"  class="checkbox_io" ></td>
 				                          <td>{{entity.id}}</td>
 									      <td>{{entity.goodsName}}</td>
 									      <td>{{entity.price}}</td>
 									      <td>{{itemCatList[entity.category1Id]}}</td>
 									      <td>{{itemCatList[entity.category2Id]}}</td>
 									      <td>{{itemCatList[entity.category3Id]}}</td>
-		                                <!--  <td>
+		                           <!--       <td>
 		                                  	<span>
 		                                  		{{status[entity.auditStatus]}}
 		                                  	</span>
