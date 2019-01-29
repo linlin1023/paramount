@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by szz on 2018/3/25 21:04.
- * Email szhz186@gmail.com
+ * Created by pll on 2018/11/25 21:04.
+ * Email support@paramountmerchandize.co.nz
  */
-@Api(tags = "登陆")
+@Api(tags = "login")
 @RestController
 @RequestMapping
 public class LoginController {
@@ -29,21 +29,21 @@ public class LoginController {
 
 
     @LogAnnotation
-    @ApiOperation(value = "web端登陆")
+    @ApiOperation(value = "web login")
     @PostMapping("/sys/login")
     public void login(String username,String password){
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
         SecurityUtils.getSubject().login(usernamePasswordToken);
     }
 
-    @ApiOperation(value = "当前登录用户")
+    @ApiOperation(value = "current login user")
     @GetMapping("/sys/login")
     public User getLoginInfo(){
         return UserUtil.getCurrentUser();
     }
 
     @LogAnnotation
-    @ApiOperation(value = "restful登录方式,前后端分离时的接口")
+    @ApiOperation(value = "restful style,the interface between front end and back end")
     @PostMapping("/sys/login/restful")
     public Token restfulLogin(String username,String password){
         UsernamePasswordToken usernamePasswordToken=new UsernamePasswordToken(username,password);

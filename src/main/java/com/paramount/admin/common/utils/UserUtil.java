@@ -10,8 +10,8 @@ import org.apache.shiro.subject.Subject;
 import java.util.List;
 
 /**
- * Created by szz on 2018/3/24 17:27.
- * Email szhz186@gmail.com
+ * Created by szz on 2018/11/24 17:27.
+ * Email support@paramountmerchandize.co.nz
  */
 public class UserUtil {
     public static User getCurrentUser() {

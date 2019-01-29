@@ -7,8 +7,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by szz on 2018/3/25 23:05.
- * Email szhz186@gmail.com
+ * Created by szz on 2018/11/25 23:05.
+ * Email support@parammountmerchandize.co.nz
  * 通过spring获取bean,shiro的realm并没有交给spring管理,所以需要手动注入
  */
 @Component

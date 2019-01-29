@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 /**
- * Created by szz on 2018/3/23 23:51.
+ * Created by support@paramountmerchandiza.co.nz on 2018/11/23 23:51.
  */
 public class User extends BaseEntity<Long>{
     private static final long serialVersionUID = 1037772568581293362L;

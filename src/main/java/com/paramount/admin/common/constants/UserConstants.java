@@ -1,8 +1,8 @@
 package com.paramount.admin.common.constants;
 
 /**
- * Created by szz on 2018/3/24 16:16.
- * Email szhz186@gmail.com
+ * Created by szz on 2018/11/24 16:16.
+ * Email support@paramountmerchandize.co.nz
  * 用户相关的常量
  */
 public interface UserConstants {

@@ -5,7 +5,7 @@
 
 
                         $scope.login = function(obj) {
-                                       		$(obj).attr("disabled", true);
+                                       		$(obj).attr("disabled", true);// make the form disabled for editing
 
                                        		var username = $.trim($('#username').val());
                                        		var password = $.trim($('#password').val());

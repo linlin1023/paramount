@@ -25,8 +25,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Created by szz on 2018/3/25 21:35.
- * Email szhz186@gmail.com
+ * Created by pll on 2018/11/25 21:35.
+ * Email suppot@paramountmerchandize.co.nz
  */
 public class ShiroRealm extends AuthorizingRealm {
     private static final Logger log = LoggerFactory.getLogger("adminLogger");
@@ -40,16 +40,16 @@ public class ShiroRealm extends AuthorizingRealm {
 
         User user = userService.getUser(username);
         if (user == null) {
-            throw new UnknownAccountException("用户名不存在");
+            throw new UnknownAccountException("username is not exist");
         }
 
         if (!user.getPassword()
                 .equals(userService.passwordEncoder(new String(usernamePasswordToken.getPassword()), user.getSalt()))) {
-            throw new IncorrectCredentialsException("密码错误");
+            throw new IncorrectCredentialsException("password is wrong");
         }
 
         if (user.getStatus() != Status.VALID) {
-            throw new IncorrectCredentialsException("无效状态，请联系管理员");
+            throw new IncorrectCredentialsException("inactive status，please contact administrator");
         }
 
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getPassword(),
