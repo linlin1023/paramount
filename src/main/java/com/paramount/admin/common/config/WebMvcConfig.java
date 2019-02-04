@@ -16,8 +16,8 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by szz on 2018/3/30 15:12.
- * Email szhz186@gmail.com
+ * Created by llp on 2018/3/30 15:12.
+ * Email support@paramountmerchandize.co.nz
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {

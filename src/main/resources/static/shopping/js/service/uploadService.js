@@ -5,12 +5,12 @@ app.service("uploadService",function($http){
 		var formData = new FormData();
 		// 向formData中添加数据:
 		formData.append("file",file.files[0]);
-		
+		console.log(file)
 		return $http({
 			method:'post',
 			url:'../upload/uploadFile.do',
 			data:formData,
-			headers:{'Content-Type':"multipart/form-data; boundary=HereGoes"} ,// Content-Type : text/html  text/plain   "multipart/form-data"
+			headers:{'Content-Type':undefined} ,// Content-Type : text/html  text/plain   "multipart/form-data"
 			transformRequest: angular.identity
 		});
 	}

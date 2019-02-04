@@ -49,10 +49,10 @@ public class ItemCatController {
 	public Result add(@RequestBody TbItemCat itemCat){
 		try {
 			itemCatService.add(itemCat);
-			return new Result(true, "增加成功");
+			return new Result(true, "Add successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "增加失败");
+			return new Result(false, "Add failed");
 		}
 	}
 	
@@ -65,10 +65,10 @@ public class ItemCatController {
 	public Result update(@RequestBody TbItemCat itemCat){
 		try {
 			itemCatService.update(itemCat);
-			return new Result(true, "修改成功");
+			return new Result(true, "Edit successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "修改失败");
+			return new Result(false, "Edit failed");
 		}
 	}	
 	
@@ -91,10 +91,10 @@ public class ItemCatController {
 	public Result delete(Long [] ids){
 		try {
 			itemCatService.delete(ids);
-			return new Result(true, "删除成功"); 
+			return new Result(true, "Delete successfilly");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "删除失败");
+			return new Result(false, "Delete failed");
 		}
 	}
 	
