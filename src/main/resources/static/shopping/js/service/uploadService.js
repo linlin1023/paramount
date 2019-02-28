@@ -5,7 +5,7 @@ app.service("uploadService",function($http){
 		var formData = new FormData();
 		// 向formData中添加数据:
 		formData.append("file",file.files[0]);
-		console.log(file)
+
 		return $http({
 			method:'post',
 			url:'../upload/uploadFile.do',

@@ -74,3 +74,7 @@ partner: 1473426802
 partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
 notifyurl: http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify
 pagedir: pagedir
+ENDPOINT: http://oss-ap-southeast-1.aliyuncs.com
+ACCESS_KEY_ID: LTAIOprLJ23TFyBI
+ACCESS_KEY_SECRET: JKo9s0YgY372FK5C8Heejrkwf2FdB6
+BUCKET_NAME: boxlot-product-private
