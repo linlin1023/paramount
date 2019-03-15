@@ -29,6 +29,9 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Autowired
 	private TbGoodsMapper goodsMapper;
+
+	@Autowired
+	private TbItemMapper itemMapper;
 	
 	/**
 	 * 查询全部
@@ -51,9 +54,7 @@ public class GoodsServiceImpl implements GoodsService {
 	@Autowired
 	private TbGoodsDescMapper goodsDescMapper;
 	
-	@Autowired
-	private TbItemMapper itemMapper;
-	
+
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
 	
@@ -203,10 +204,15 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public void delete(Long[] ids) {
 		for(Long id:ids){
-//			goodsMapper.deleteByPrimaryKey(id);
-			TbGoods tbGoods = goodsMapper.selectByPrimaryKey(id);
+			goodsMapper.deleteByPrimaryKey(id);
+			TbItemExample example = new TbItemExample();
+			TbItemExample.Criteria criteria = example.createCriteria();
+			criteria.andGoodsIdEqualTo(id);
+			itemMapper.deleteByExample(example);
+
+			/*TbGoods tbGoods = goodsMapper.selectByPrimaryKey(id);
 			tbGoods.setIsDelete("1");
-			goodsMapper.updateByPrimaryKey(tbGoods);
+			goodsMapper.updateByPrimaryKey(tbGoods);*/
 		}		
 	}
 	

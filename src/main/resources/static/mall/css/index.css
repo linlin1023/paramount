@@ -1,0 +1,11 @@
+.single-product {
+    width: 211px;
+    margin-right: 0px;
+    position: relative;
+    padding: 0px;
+}
+a.titlellp{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+}

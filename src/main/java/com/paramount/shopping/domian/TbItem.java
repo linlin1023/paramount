@@ -53,10 +53,29 @@ public class TbItem implements Serializable{
     private String spec;
 
     private String seller;
-    
-   
+
     private Map<String,String> specMap;
-    
+
+    private String SKU;
+
+    private Integer soldCount;
+
+    public Integer getSoldCount() {
+        return soldCount;
+    }
+
+    public void setSoldCount(Integer soldCount) {
+        this.soldCount = soldCount;
+    }
+
+    public String getSKU() {
+        return SKU;
+    }
+
+    public void setSKU(String SKU) {
+        this.SKU = SKU;
+    }
+
     public Map<String, String> getSpecMap() {
 		return specMap;
 	}

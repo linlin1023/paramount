@@ -131,5 +131,13 @@ public class ItemServiceImpl implements ItemService {
 		Page<TbItem> page= (Page<TbItem>)itemMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+	@Override
+	public List<TbItem> findTopSeller(int num) {
+		if(num <= 0) {
+			num = 5;
+		}
+		return itemMapper.selectTopSeller(num);
+	}
+
 }

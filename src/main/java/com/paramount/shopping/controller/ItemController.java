@@ -8,6 +8,7 @@ import com.paramount.shopping.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 /**
  * controller
@@ -108,6 +109,11 @@ public class ItemController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbItem item, int page, int rows  ){
 		return itemService.findPage(item, page, rows);		
+	}
+
+	@RequestMapping("/findTopSeller")
+	public List<TbItem> findTopSeller(int num){
+		return itemService.findTopSeller(num);
 	}
 	
 }
