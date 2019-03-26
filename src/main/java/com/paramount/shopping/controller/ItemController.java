@@ -106,7 +106,7 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult search(@RequestBody TbItem item, int page, int rows  ){
+	public PageResult search(@RequestBody TbItem item, int page, int rows  ){ //post 请求有requestbody,  requestparam不用加注解
 		return itemService.findPage(item, page, rows);		
 	}
 

@@ -31,7 +31,7 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body ng-app="pinyougou" ng-controller = "itemController" ng-init="findAll();findNewArrival()">
+<body ng-app="pinyougou" ng-controller = "itemController" ng-init="findAll();findNewArrival();findTopSeller(15)">
 
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -61,23 +61,6 @@
 						<ul>
 							<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
 						</ul>
-						<!--<ul>
-							<li class="slide-toggle-2 text-uppercase"><a href="#"><i class="fa fa-usd"></i>USD</a>
-								<ul class="show-toggle-2">
-									<li><a href="#"><i class="fa fa-eur"></i> EUR</a></li>
-									<li><a href="#"><i class="fa fa-gbp"></i> GBP</a></li>
-									<li><a href="#"><i class="fa fa-usd"></i> USD</a></li>
-								</ul>	
-							</li>
-						</ul>
-						<ul>
-							<li class="slide-toggle-3 text-uppercase"><a href="#">fr-ca</a>
-								<ul class="show-toggle-3">
-									<li><a href="#">en-gb</a></li>
-									<li><a href="#">fr-ca</a></li>
-								</ul>	
-							</li>
-						</ul>-->
 					</div>
 				</div>
 			</div>
@@ -103,44 +86,6 @@
 							<form action="#">
 								<select name="#" id="select">
 									<option value="" id="allcategory">All categories</option>
-									<!--<option value="40">Accessories</option>
-									<option value="41">Clothing</option>
-									<option value="42">-Hoodies</option>
-									<option value="47">-T-shirts</option>
-									<option value="43">Men's</option>
-									<option value="50"> -Hats</option>
-									<option value="44">Music</option>
-									<option value="46">-Singles</option>
-									<option value="49">-Albums</option>
-									<option value="45">Posters</option>
-									<option value="48">Women's</option>
-									<option value="51">-Hats</option>
-									<option value="52">&#45;&#45;&#45;&#45;Shoes</option>
-									<option value="53">&#45;&#45;&#45;&#45;Scarves</option>
-									<option value="54">Jewellery</option>
-									<option value="55">-&#45;&#45;Rings</option>
-									<option value="56">&#45;&#45;&#45;&#45;Gold Ring</option>
-									<option value="57">&#45;&#45;&#45;&#45;platinum ring</option>
-									<option value="58">&#45;&#45;&#45;&#45;Silver Ring</option>
-									<option value="59">&#45;&#45;&#45;&#45;Diamond rings</option>
-									<option value="60">-&#45;&#45;Necklaces</option>
-									<option value="61">&#45;&#45;&#45;&#45;Diamond necklaces</option>
-									<option value="62">&#45;&#45;&#45;&#45;Pearl necklaces</option>
-									<option value="63">&#45;&#45;&#45;&#45;Silver necklaces</option>
-									<option value="64">&#45;&#45;&#45;&#45;Statement necklaces</option>
-									<option value="65">Equipments</option>
-									<option value="73">-&#45;&#45;Accessories</option>
-									<option value="78">&#45;&#45;&#45;&#45;headphone</option>
-									<option value="79">&#45;&#45;&#45;&#45;health</option>
-									<option value="80">&#45;&#45;&#45;&#45;camera</option>
-									<option value="74">-&#45;&#45;beauty</option>
-									<option value="75">&#45;&#45;&#45;&#45;run</option>
-									<option value="76">&#45;&#45;&#45;&#45;evening</option>
-									<option value="77">&#45;&#45;&#45;&#45;coats</option>
-									<option value="66">Watches</option>
-									<option value="67">Books</option>
-									<option value="68">Sports</option>
-									<option value="69">Gifts</option>						-->
 								</select>
 								<input type="text" placeholder="Search...">
 								<button><i class="fa fa-search"></i></button>
@@ -324,30 +269,35 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<!-- bestseller-area -->
+				<!-- bestseller-area llp-->
 				<div class="bestseller-area dotted-style-2">
 					<div class="section-title">
 						<h3>Bestseller</h3>
 					</div>
 					<div class="single-product-items-active border-1">
-						<div class="single-product-items">
+						<div class="single-product-items" ng-repeat="pair in pairOfFiveList" on-finish-render-topseller>
 							<div class="single-product single-product-sidebar white-bg">
 								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+									<a href="#"><img src="{{pair.first.image}}" alt="image" /></a>
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html">Lounge Chair</a></h4>
+										<h4><a href="product-details.html" class="titlellp">{{pair.first.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="pair.first.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.first.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$300.00</span>
+										<span class="price product-price">${{pair.first.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -358,21 +308,26 @@
 							</div>
 							<div class="single-product single-product-sidebar white-bg">
 								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/14.jpg" alt="" /></a>
+									<a href="#"><img src="{{pair.second.image}}" alt="image" /></a>
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html">Samsung G941BW</a></h4>
+										<h4><a href="product-details.html" class="titlellp">{{pair.second.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.second.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$230.00</span>
+										<span class="price product-price">${{pair.second.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -383,21 +338,26 @@
 							</div>
 							<div class="single-product single-product-sidebar white-bg">
 								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/13.jpg" alt="" /></a>
+									<a href="#"><img src="{{pair.third.image}}" alt="image" /></a>
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html">power banks</a></h4>
+										<h4><a href="product-details.html" class="titlellp">{{pair.third.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.third.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.third.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.third.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.third.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.third.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.third.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.third.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.third.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.third.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.third.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$100.00</span>
+										<span class="price product-price">${{pair.third.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -408,21 +368,26 @@
 							</div>
 							<div class="single-product single-product-sidebar white-bg">
 								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/3.jpg" alt="" /></a>
+									<a href="#"><img src="{{pair.fourth.image}}" alt="image" /></a>
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html">iPhone</a></h4>
+										<h4><a href="product-details.html" class="titlellp">{{pair.fourth.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fourth.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fourth.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fourth.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fourth.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fourth.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.fourth.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fourth.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fourth.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fourth.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fourth.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$201.00</span>
+										<span class="price product-price">${{pair.fourth.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -433,21 +398,26 @@
 							</div>
 							<div class="single-product single-product-sidebar white-bg">
 								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+									<a href="#"><img src="{{pair.fifth.image}}" alt="image" /></a>
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook Pro</a></h4>
+										<h4><a href="product-details.html" class="titlellp">{{pair.fifth.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fifth.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fifth.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fifth.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fifth.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.fifth.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.fifth.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fifth.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fifth.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fifth.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.fifth.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$700.00</span>
+										<span class="price product-price">${{pair.fifth.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -455,135 +425,9 @@
 										</div>
 									</div>
 								</div>
-							</div>										
+							</div>
 						</div>
-						<div class="single-product-items">
-							<div class="single-product single-product-sidebar white-bg">
-								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/6.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-content-right">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Lounge Chair</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$300.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-									</div>
-								</div>					
-							</div>
-							<div class="single-product single-product-sidebar white-bg">
-								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/14.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-content-right">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Samsung G941BW</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$230.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="single-product single-product-sidebar white-bg">
-								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/13.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-content-right">
-									<div class="pro-title">
-										<h4><a href="product-details.html">power banks</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$100.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="single-product single-product-sidebar white-bg">
-								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/3.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-content-right">
-									<div class="pro-title">
-										<h4><a href="product-details.html">iPhone</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$201.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="single-product single-product-sidebar white-bg">
-								<div class="product-img product-img-left">
-									<a href="#"><img src="img/product/7.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-content-right">
-									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook Pro</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$700.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-									</div>
-								</div>
-							</div>										
-						</div>						
+
 					</div>						
 				</div>
 				<!-- special-products-area -->
@@ -760,16 +604,16 @@
 
 									<div class="pro-rating ">
 										<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
-										<a href="#" ng-if="pair.first..stars[0]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[1]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[2]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[3]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[4]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="!pair.first..stars[0]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[1]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[2]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[3]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[4]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="pair.first.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.first.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 
 
@@ -798,16 +642,16 @@
 									</div>
 									<div class="pro-rating ">
 										<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
-										<a href="#" ng-if="pair.first..stars[0]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[1]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[2]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[3]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="pair.first..stars[4]"><i class="fa fa-star"></i></a>
-										<a href="#" ng-if="!pair.first..stars[0]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[1]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[2]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[3]"><i class="fa fa-star-o"></i></a>
-										<a href="#" ng-if="!pair.first..stars[4]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="pair.second.stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.second.stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.second.stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.second.stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
 										<span class="price product-price">${{pair.second.price}}</span>
@@ -1149,7 +993,7 @@
 <script src="js/controller/itemController.js"></script>
 <script src="js/service/itemService.js"></script>
 <script src="js/directive/onFinishRender"></script>
-
+<script src="js/directive/onFinishRenderTopseller"></script>
 
 </body>
 </html>

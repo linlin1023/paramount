@@ -134,7 +134,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<TbItem> findTopSeller(int num) {
-		if(num <= 0) {
+		if(num <= 0 ) {
 			num = 5;
 		}
 		return itemMapper.selectTopSeller(num);

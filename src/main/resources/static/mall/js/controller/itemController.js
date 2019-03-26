@@ -132,5 +132,43 @@ app.controller('itemController' , function($scope,$controller   ,itemService){	 
         		}
         	}
         })
-    })
+    });
+
+    $scope.$on('ngRepeatFinishedTopseller',function(ngRepeatFinishedTopsellerEvent){
+         $('.single-product-items-active').owlCarousel({
+            	loop:true,
+            	autoplay:false,
+            	nav:true,
+            	navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+            	responsive:{
+            		0:{
+            			items:1
+            		},
+            		767:{
+            			items:2
+            		},
+            		1000:{
+            			items:1
+            		}
+            	}
+            })
+    });
+
+
+
+    $scope.findTopSeller = function(num){
+        itemService.findTopSeller(num).success(function(response){
+                $scope.topSellerList = response;
+                $scope.rating($scope.topSellerList);
+                $scope.pairFive($scope.topSellerList);
+        });
+    }
+
+    $scope.pairFive = function(list){
+        $scope.pairOfFiveList = [];
+        var num = list.length;
+        for(var i = 0; i < num; i  = i + 5){
+            $scope.pairOfFiveList.push({"first": list[i], "second": list[i+1], "third": list[i+2], "fourth":list[i+3], "fifth": list[i+4]});
+        }
+    }
 });

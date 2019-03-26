@@ -522,7 +522,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="selectTopSeller" resultMap="BaseResultMap">
-      SELECT * FROM tb_item  ORDER BY sold_count DESC  LIMIT 0, #{num};
+  <select id="selectTopSeller" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select *  from tb_item ORDER BY sold_count is null , sold_count desc limit 0 , #{num};
   </select>
 </mapper>

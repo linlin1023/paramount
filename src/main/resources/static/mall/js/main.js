@@ -207,7 +207,7 @@ $('.tab-product-active').owlCarousel({
 /*----------------------------
  single-product-items-active
 ------------------------------ */ 
-$('.single-product-items-active').owlCarousel({
+/*$('.single-product-items-active').owlCarousel({
 	loop:true,
 	autoplay:false,
 	nav:true,
@@ -223,7 +223,7 @@ $('.single-product-items-active').owlCarousel({
 			items:1
 		}
 	}
-})
+})*/
 /*----------------------------
  single-product-items-2-active
 ------------------------------ */ 

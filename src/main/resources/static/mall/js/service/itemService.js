@@ -22,4 +22,7 @@ app.service('itemService',function($http){
 	this.findNewArrival=function(){
 	    return $http.get('../shopping/item/findNew.do');
 	}
+	this.findTopSeller = function(num){
+	    return $http.get('../shopping/item/findTopSeller?num='+num);
+	}
 });
