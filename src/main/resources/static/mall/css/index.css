@@ -1,4 +1,4 @@
-.single-product {
+.single-product-llp {
     width: 211px;
     margin-right: 0px;
     position: relative;
@@ -8,4 +8,9 @@ a.titlellp{
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+}
+
+.productImagellp{
+    height: 200px;
+    width: 200px
 }

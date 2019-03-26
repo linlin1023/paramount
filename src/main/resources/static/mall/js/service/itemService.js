@@ -17,5 +17,9 @@ app.service('itemService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../shopping/item/search.do?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}
+
+	this.findNewArrival=function(){
+	    return $http.get('../shopping/item/findNew.do');
+	}
 });

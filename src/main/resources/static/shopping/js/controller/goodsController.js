@@ -133,6 +133,8 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	$scope.entity={goods:{},goodsDesc:{itemImages:[],specificationItems:[]}};
 	
 	$scope.add_image_entity = function(){
+	    if(typeof($scope.entity.goodsDesc.itemImages)=="undefined" )
+	       $scope.entity.goodsDesc.itemImages = [];
 		$scope.entity.goodsDesc.itemImages.push($scope.image_entity);
 	}
 	
@@ -211,6 +213,10 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 
 	
 	$scope.updateSpecAttribute = function($event,name,value){
+
+	    if(typeof($scope.entity.goodsDesc.specificationItems) == "undefined"){
+	        $scope.entity.goodsDesc.specificationItems = [];
+	    }
 		// 调用封装的方法判断 勾选的名称是否存在:
 		var object = $scope.searchObjectByKey($scope.entity.goodsDesc.specificationItems,"attributeName",name);
 	

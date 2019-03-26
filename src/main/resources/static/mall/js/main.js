@@ -310,7 +310,7 @@ $('.feature-product-active').owlCarousel({
 /*----------------------------
  new-product-active
 ------------------------------ */ 
-$('.new-product-active').owlCarousel({
+/*$('.new-product-active').owlCarousel({
 	loop:true,
 	autoplay:false,
 	nav:true,
@@ -329,7 +329,7 @@ $('.new-product-active').owlCarousel({
 			items:4
 		}
 	}
-})
+})*/
 
 /*----------------------------
  brand-active

@@ -140,4 +140,14 @@ public class ItemServiceImpl implements ItemService {
 		return itemMapper.selectTopSeller(num);
 	}
 
+	@Override
+	public List<TbItem> findNew() {
+
+		TbItemExample example  = new TbItemExample();
+		TbItemExample.Criteria criteria = example.createCriteria();
+		criteria.andCategoryEqualTo("New-Arrival");
+		List<TbItem>  listOfNew = itemMapper.selectByExample(example);
+		return listOfNew;
+	}
+
 }

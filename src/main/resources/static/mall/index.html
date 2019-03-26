@@ -31,7 +31,7 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body ng-app="pinyougou" ng-controller = "itemController" ng-init="findAll()">
+<body ng-app="pinyougou" ng-controller = "itemController" ng-init="findAll();findNewArrival()">
 
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -694,9 +694,9 @@
 						<h3>Products</h3><!--FEATURED PRODUCTS-->
 					</div>
 					<div class="feature-product-active-1 border-1">
-						<div class="single-product  white-bg col-lg-3 col-md-4 col-sm-6 col-xs-6" ng-repeat="entity in list">
+						<div class="single-product  white-bg col-lg-3 col-md-4 col-sm-6 col-xs-6 single-product-llp" ng-repeat="entity in list16">
 							<div class="product-img pt-20">
-								<a href="#"><img src="{{entity.image}}" alt="" /></a>
+								<a href="#"><img class="productImagellp" src="{{entity.image}}" alt="image not found" /></a>
 							</div>
 							<div class="product-content product-i">
 								<div class="pro-title">
@@ -728,7 +728,6 @@
 									</div>
 								</div>
 							</div>
-							<span class="new">new</span>
 						</div>
 
 					</div>
@@ -748,25 +747,34 @@
 						<h3>New Products</h3>
 					</div>
 					<!--新产品开始llp-->
-					<div class="new-product-active border-1">
-						<div class="new-product-items">
+					<div class="new-product-active border-1" >  <!--owlCarousel--->
+						<div class="new-product-items" ng-repeat="pair in listOfNewArrivalPair" on-finish-render>
 							<div class="single-product  white-bg">
 								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+									<a href="#"><img class="productImagellp" src="{{pair.first.image}}" alt="Image" /></a>
 								</div>
 								<div class="product-content product-i">
 									<div class="pro-title">
-										<h4><a href="product-details.html">Moebius Table</a></h4>
+										<h4><a  class="titlellp"  href="product-details.html">{{pair.first.title}}</a></h4>
 									</div>
+
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
+										<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
+										<a href="#" ng-if="pair.first..stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.first..stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
+
+
 									<div class="price-box">
-										<span class="price product-price">$400.00</span>
+										<span class="price product-price">${{pair.first.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -782,112 +790,27 @@
 							</div>
 							<div class="single-product  white-bg">
 								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+									<a href="#"><img class="productImagellp" src="{{pair.second.image}}" alt="" /></a>
 								</div>
 								<div class="product-content product-i">
 									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook Pro</a></h4>
+										<h4><a class="titlellp"  href="product-details.html">{{pair.second.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
+										<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
+										<a href="#" ng-if="pair.first..stars[0]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[1]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[2]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[3]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="pair.first..stars[4]"><i class="fa fa-star"></i></a>
+										<a href="#" ng-if="!pair.first..stars[0]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[1]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[2]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[3]"><i class="fa fa-star-o"></i></a>
+										<a href="#" ng-if="!pair.first..stars[4]"><i class="fa fa-star-o"></i></a>
 									</div>
 									<div class="price-box">
-										<span class="price product-price">$140.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="new-product-items">
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/11.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Samsung Y8</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$262.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/16.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook Air</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$120.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="new-product-items">
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/17.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$410.00</span>
+										<span class="price product-price">${{pair.second.price}}</span>
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
@@ -901,158 +824,8 @@
 								</div>
 								<span class="new">new</span>
 							</div>
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/6.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Como Ottoman</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$111.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-						<div class="new-product-items">
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/7.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">MacBook</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$331.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-								<span class="new">new</span>
-							</div>
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/2.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Lounge Chair Cinema</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$111.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="new-product-items">
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/1.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Moebius Table</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$262.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-								<span class="new">new</span>
-							</div>
-							<div class="single-product  white-bg">
-								<div class="product-img pt-20">
-									<a href="#"><img src="img/product/6.jpg" alt="" /></a>
-								</div>
-								<div class="product-content product-i">
-									<div class="pro-title">
-										<h4><a href="product-details.html">Como Ottoman</a></h4>
-									</div>
-									<div class="pro-rating ">
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star"></i></a>
-										<a href="#"><i class="fa fa-star-o"></i></a>
-									</div>
-									<div class="price-box">
-										<span class="price product-price">$111.00</span>
-									</div>
-									<div class="product-icon">
-										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-										</div>
-										<div class="product-icon-right floatright">
-											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-											<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+
 					</div>
 					<!--新产品结束llp-->
 				</div>
@@ -1375,6 +1148,8 @@
 <script src="js/controller/baseController.js"></script>
 <script src="js/controller/itemController.js"></script>
 <script src="js/service/itemService.js"></script>
+<script src="js/directive/onFinishRender"></script>
+
 
 </body>
 </html>

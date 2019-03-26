@@ -141,4 +141,8 @@
     text-decoration: none
 }
 
+.table{
+    word-break: break-all;
+    word-wrap: break-all
+}
 

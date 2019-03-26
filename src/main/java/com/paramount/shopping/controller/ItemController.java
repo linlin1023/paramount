@@ -101,7 +101,6 @@ public class ItemController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
@@ -115,5 +114,10 @@ public class ItemController {
 	public List<TbItem> findTopSeller(int num){
 		return itemService.findTopSeller(num);
 	}
-	
+
+
+	@RequestMapping("/findNew")
+	public List<TbItem> findNew(){
+		return itemService.findNew();
+	}
 }
