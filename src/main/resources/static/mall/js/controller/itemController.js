@@ -1,5 +1,5 @@
  //控制层 
-app.controller('itemController' , function($scope,$controller   ,itemService){	  //
+app.controller('itemController' , function($scope,$controller,itemService, contentService){	  //
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -11,10 +11,15 @@ app.controller('itemController' , function($scope,$controller   ,itemService){	 
 				$scope.list=response;
 				$scope.rating($scope.list)
 				$scope.randomSixteenProducts();
-
+                $scope.setSpecialProduct($scope.list);
 			}			
 		);
 	}
+
+    $scope.setSpecialProduct = function(list){
+        var index = $scope.getRandomInt(list.length);
+        $scope.specialProduct = list[index];
+    }
 
     $scope.rating = function(list){
         	for(entity in list){
@@ -169,6 +174,44 @@ app.controller('itemController' , function($scope,$controller   ,itemService){	 
         var num = list.length;
         for(var i = 0; i < num; i  = i + 5){
             $scope.pairOfFiveList.push({"first": list[i], "second": list[i+1], "third": list[i+2], "fourth":list[i+3], "fifth": list[i+4]});
+        }
+    }
+
+
+
+    $scope.findAllAdvertisement = function(){
+         contentService.findAll().success(
+            function(response){
+                $scope.allAdvertisementList = response;
+                $scope.populateAdvs();
+            }
+         );
+    }
+
+    $scope.rolling = []; // 9
+    $scope.topRightFirst = [];   //10
+    $scope.topRightSecond = [];  //11
+    $scope.middle = [];  //12
+    $scope.bottomLeft = [];  //13
+    $scope.bottomRight = [];  //14
+    $scope.populateAdvs = function(){
+        for(var entity in $scope.allAdvertisementList ){
+            var categoryId = $scope.allAdvertisementList[entity].categoryId;
+            var advItem = $scope.allAdvertisementList[entity]
+            if(categoryId == 9)
+                $scope.rolling.push(advItem);
+            else if(categoryId == 10)
+                $scope.topRightFirst.push(advItem);
+            else if(categoryId == 11)
+                $scope.topRightSecond.push(advItem);
+            else if(categoryId == 12)
+                $scope.middle.push(advItem);
+            else if(categoryId == 13)
+                $scope.bottomLeft.push(advItem);
+            else if(categoryId == 14)
+                $scope.bottomRight.push(advItem);
+
+
         }
     }
 });

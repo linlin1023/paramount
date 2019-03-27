@@ -31,7 +31,7 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body ng-app="pinyougou" ng-controller = "itemController" ng-init="findAll();findNewArrival();findTopSeller(15)">
+<body ng-app="pinyougou" ng-controller = "itemController"  ng-init="findAll();findNewArrival();findTopSeller(15);findAllAdvertisement()">
 
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -232,8 +232,8 @@
 					<div class="slider-container">
 						<!-- Slider Image -->
 						<div id="mainSlider" class="nivoSlider slider-image">
-							<img src="img/slider/1.jpg" alt="" title="#htmlcaption1">
-							<img src="img/slider/2.jpg" alt="" title="#htmlcaption2">
+							<img src="{{rolling[0].pic}}" alt="" title="#htmlcaption1">
+							<img src="{{rolling[1].pic}}" alt="" title="#htmlcaption2">
 						</div>
 					</div>
 				</div>
@@ -245,14 +245,14 @@
 				<div class="slider-sidebar">
 					<div class="slider-single-img mb-20">
 						<a href="#">
-							<img class="img_a" src="img/menu-l/1-1.jpg" alt="" />
-							<img class="img_b" src="img/menu-l/1-1.jpg" alt="" />
+							<img class="img_a" src="{{topRightFirst[0].pic}}" alt="" />
+							<img class="img_b" src="{{topRightFirst[0].pic}}" alt="" />
 						</a>
 					</div>
 					<div class="slider-single-img none-sm">
 						<a href="#">
-						<img class="img_a" src="img/menu-l/1-2.jpg" alt="" />
-						<img class="img_b" src="img/menu-l/1-2.jpg" alt="" />
+						<img class="img_a" src="{{topRightSecond[0].pic}}" alt="" />
+						<img class="img_b" src="{{topRightSecond[0].pic}}" alt="" />
 						</a>
 					</div>
 				</div>
@@ -438,21 +438,27 @@
 					<div class="special-products-active border-1">
 						<div class="single-product white-bg">
 							<div class="product-img">
-								<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+								<a href="#"><img src="{{specialProduct.image}}" alt="" /></a>
 							</div>
 							<div class="product-content">
 								<div class="pro-title">
-									<h4><a href="product-details.html">Lounge Chair Cinema</a></h4>
+									<h4><a href="product-details.html">{{specialProduct.title}}</a></h4>
 								</div>
 								<div class="pro-rating ">
-									<a href="#"><i class="fa fa-star"></i></a>
-									<a href="#"><i class="fa fa-star"></i></a>
-									<a href="#"><i class="fa fa-star"></i></a>
-									<a href="#"><i class="fa fa-star"></i></a>
-									<a href="#"><i class="fa fa-star-o"></i></a>
+									<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
+									<a href="#" ng-if="specialProduct.stars[0]"><i class="fa fa-star"></i></a>
+									<a href="#" ng-if="specialProduct.stars[1]"><i class="fa fa-star"></i></a>
+									<a href="#" ng-if="specialProduct.stars[2]"><i class="fa fa-star"></i></a>
+									<a href="#" ng-if="specialProduct.stars[3]"><i class="fa fa-star"></i></a>
+									<a href="#" ng-if="specialProduct.stars[4]"><i class="fa fa-star"></i></a>
+									<a href="#" ng-if="!specialProduct.stars[0]"><i class="fa fa-star-o"></i></a>
+									<a href="#" ng-if="!specialProduct.stars[1]"><i class="fa fa-star-o"></i></a>
+									<a href="#" ng-if="!specialProduct.stars[2]"><i class="fa fa-star-o"></i></a>
+									<a href="#" ng-if="!specialProduct.stars[3]"><i class="fa fa-star-o"></i></a>
+									<a href="#" ng-if="!specialProduct.stars[4]"><i class="fa fa-star-o"></i></a>
 								</div>
 								<div class="price-box">
-									<span class="price product-price">$262.00</span>
+									<span class="price product-price">${{specialProduct.price}}</span>
 								</div>
 								<div class="product-icon">
 									<div class="product-icon-left f-left">
@@ -580,8 +586,8 @@
 				<div class="banner-area ptb-40">
 					<div class="slider-single-img res">
 						<a href="#">
-						<img class="img_a" src="img/banner/1.jpg" alt="" />
-						<img class="img_b" src="img/banner/1.jpg" alt="" />
+						<img class="img_a" src="{{middle[0].pic}}" alt="" />
+						<img class="img_b" src="{{middle[0].pic}}" alt="" />
 						</a>
 					</div>
 				</div>
@@ -679,16 +685,16 @@
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="slider-single-img res">
 								<a href="#">
-								<img class="img_a" src="img/banner/2.jpg" alt="" />
-								<img class="img_b" src="img/banner/2.jpg" alt="" />
+								<img class="img_a" src="{{bottomLeft[0].pic}}" alt="" />
+								<img class="img_b" src="{{bottomLeft[0].pic}}" alt="" />
 								</a>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="slider-single-img">
 								<a href="#">
-								<img class="img_a" src="img/banner/3.jpg" alt="" />
-								<img class="img_b" src="img/banner/3.jpg" alt="" />
+								<img class="img_a" src="{{bottomRight[0].pic}}" alt="" />
+								<img class="img_b" src="{{bottomRight[0].pic}}" alt="" />
 								</a>
 							</div>
 						</div>
@@ -992,8 +998,9 @@
 <script src="js/controller/baseController.js"></script>
 <script src="js/controller/itemController.js"></script>
 <script src="js/service/itemService.js"></script>
-<script src="js/directive/onFinishRender"></script>
-<script src="js/directive/onFinishRenderTopseller"></script>
+<script src="js/directive/onFinishRender.js"></script>
+<script src="js/directive/onFinishRenderTopseller.js"></script>
+<script src="js/service/contentService.js"></script>
 
 </body>
 </html>
