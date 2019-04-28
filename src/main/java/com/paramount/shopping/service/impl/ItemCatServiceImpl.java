@@ -33,7 +33,17 @@ public class ItemCatServiceImpl implements ItemCatService {
 	 */
 	@Override
 	public List<TbItemCat> findAll() {
-		return itemCatMapper.selectByExample(null);
+
+		List <TbItemCat> list  = (List<TbItemCat>) redisTemplate.boundHashOps("content").get("contentAll");
+		if(list ==  null){
+			System.out.println("从数据库查找所有广告数据，");
+			list = itemCatMapper.selectByExample(null);
+			System.out.println("把所有广告数据缓存到redis");
+			redisTemplate.boundHashOps("content").put("contentAll", list);
+		}else{
+			System.out.println("从缓存里面查看所有广告数据");
+		}
+		return list;
 	}
 
 	/**
