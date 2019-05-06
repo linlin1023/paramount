@@ -44,7 +44,8 @@ spring:
     test-connection: false
   data:
       solr:
-        #host: http://127.0.0.1:8081/solr
+        host: http://localhost:8983/solr
+        core: tbitem
 mybatis:
   type-aliases-package: com.paramount.admin.domain
   mapper-locations: classpath:/mybatis-mappers/*

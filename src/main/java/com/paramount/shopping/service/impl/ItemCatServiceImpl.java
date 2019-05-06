@@ -34,14 +34,14 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Override
 	public List<TbItemCat> findAll() {
 
-		List <TbItemCat> list  = (List<TbItemCat>) redisTemplate.boundHashOps("content").get("contentAll");
+		List <TbItemCat> list  = (List<TbItemCat>) redisTemplate.boundHashOps("cat").get("catAll");
 		if(list ==  null){
-			System.out.println("从数据库查找所有广告数据，");
+			System.out.println("从缓存里面寻找分类数据，");
 			list = itemCatMapper.selectByExample(null);
-			System.out.println("把所有广告数据缓存到redis");
-			redisTemplate.boundHashOps("content").put("contentAll", list);
+			System.out.println("把所有分类数据存储到redis");
+			redisTemplate.boundHashOps("cat").put("catAll", list);
 		}else{
-			System.out.println("从缓存里面查看所有广告数据");
+			System.out.println("从缓存里面查看所有分类数据");
 		}
 		return list;
 	}
@@ -61,7 +61,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 	 */
 	@Override
 	public void add(TbItemCat itemCat) {
-		itemCatMapper.insert(itemCat);		
+		itemCatMapper.insert(itemCat);
+		redisTemplate.boundHashOps("cat").delete("catAll");
 	}
 
 	
@@ -71,6 +72,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Override
 	public void update(TbItemCat itemCat){
 		itemCatMapper.updateByPrimaryKey(itemCat);
+		redisTemplate.boundHashOps("cat").delete("catAll");
 	}	
 	
 	/**
@@ -98,11 +100,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		}		
 	}
 
-	@Test
-	public void testDelete(){
-		Long[] ids = {1307l};
-		delete(ids);
-	}
+
 	
 		@Override
 	public PageResult findPage(TbItemCat itemCat, int pageNum, int pageSize) {

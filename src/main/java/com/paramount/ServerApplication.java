@@ -2,10 +2,10 @@ package com.paramount;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.solr.core.SolrTemplate;
@@ -23,7 +23,7 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-	@Bean
+/*	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
 
 		return (container -> {
@@ -33,13 +33,17 @@ public class ServerApplication {
 
 			container.addErrorPages(error401Page, error404Page, error500Page);
 		});
-	}
+	}*/
 	@Autowired
     private SolrClient solrClient;
 
+
+	@Value("${spring.data.solr.core}")
+	private String coreName;
+
 	@Bean
     public SolrTemplate getSolrTemplate(){
-	    return new SolrTemplate(solrClient);
+	    return new SolrTemplate(solrClient );
     }
 
     @Bean

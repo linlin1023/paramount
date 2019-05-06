@@ -14,7 +14,7 @@ public class TbOrderItem implements Serializable{
 
     private String title;
 
-    private BigDecimal price;
+    private Double price;
 
     private Integer num;
 
@@ -64,11 +64,11 @@ public class TbOrderItem implements Serializable{
         this.title = title == null ? null : title.trim();
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

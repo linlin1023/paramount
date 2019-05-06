@@ -1,7 +1,6 @@
 package com.paramount.shopping.domian;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class TbGoods implements Serializable{
     private Long id;
@@ -28,7 +27,7 @@ public class TbGoods implements Serializable{
 
     private String smallPic;
 
-    private BigDecimal price;
+    private Double price;
 
     private Long typeTemplateId;
 
@@ -132,11 +131,11 @@ public class TbGoods implements Serializable{
         this.smallPic = smallPic == null ? null : smallPic.trim();
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

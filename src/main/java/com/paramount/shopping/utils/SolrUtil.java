@@ -7,6 +7,7 @@ import com.paramount.shopping.dao.TbItemMapper;
 import com.paramount.shopping.domian.TbItem;
 import com.paramount.shopping.domian.TbItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.solr.core.SolrTemplate;
@@ -22,6 +23,9 @@ public class SolrUtil {
 	
 	@Autowired
 	private SolrTemplate solrTemplate;
+
+	@Value("${spring.data.solr.core}")
+	private String coreName;
 	
 	public void importItemData(){
 		
@@ -37,8 +41,8 @@ public class SolrUtil {
 			item.setSpecMap(specMap);
 		}
 		
-		solrTemplate.saveBeans(itemList);
-		solrTemplate.commit();
+		solrTemplate.saveBeans(coreName, itemList);
+		solrTemplate.commit(coreName);
 		
 		System.out.println("---结束---");
 	}

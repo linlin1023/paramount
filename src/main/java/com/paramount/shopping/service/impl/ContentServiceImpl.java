@@ -29,7 +29,15 @@ public class ContentServiceImpl implements ContentService {
 	 */
 	@Override
 	public List<TbContent> findAll() {
-		return contentMapper.selectByExample(null);
+
+
+		List<TbContent> list = (List<TbContent>) redisTemplate.boundHashOps("content").get("contentAll");
+		if(list == null)	{
+			list = contentMapper.selectByExample(null);
+			redisTemplate.boundHashOps("content").put("contentAll",list );
+		}
+
+		return list;
 	}
 
 	/**
@@ -50,7 +58,7 @@ public class ContentServiceImpl implements ContentService {
 		
 		contentMapper.insert(content);	
 		// 清除缓存
-		redisTemplate.boundHashOps("content").delete(content.getCategoryId());
+		redisTemplate.boundHashOps("content").delete("contentAll");
 	}
 
 	
@@ -60,15 +68,8 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void update(TbContent content){
 		TbContent oldContent = contentMapper.selectByPrimaryKey(content.getId());
-		// 清除之前分类的广告缓存
-		redisTemplate.boundHashOps("content").delete(oldContent.getCategoryId());
-		
 		contentMapper.updateByPrimaryKey(content);
-		// 清除缓存
-		if(content.getCategoryId() != oldContent.getCategoryId()){
-			redisTemplate.boundHashOps("content").delete(content.getCategoryId());
-		}
-		
+		redisTemplate.boundHashOps("content").delete("contentAll");
 	}	
 	
 	/**

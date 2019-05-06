@@ -7,8 +7,8 @@ import java.util.Map;
 
 import com.paramount.shopping.domian.TbItem;
 import com.paramount.shopping.service.ItemSearchService;
-import org.apache.solr.client.solrj.SolrClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,6 +22,9 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
 	@Autowired
 	private SolrTemplate solrTemplate;
+
+	@Value("${spring.data.solr.core}")
+	private String coreName;
 
 	@Override
 	public Map search(Map searchMap) {
@@ -121,7 +124,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 			pageSize=20;
 		}
 		
-		query.setOffset( (pageNo-1)*pageSize  );//起始索引
+		query.setOffset( Long.valueOf((pageNo-1)*pageSize ) );//起始索引
 		query.setRows(pageSize);//每页记录数
 		
 		
@@ -146,7 +149,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		
 		//***********  获取高亮结果集  ***********
 		//高亮页对象
-		HighlightPage<TbItem> page = solrTemplate.queryForHighlightPage(query, TbItem.class);
+		HighlightPage<TbItem> page = solrTemplate.queryForHighlightPage(coreName, query, TbItem.class);
 		//高亮入口集合(每条记录的高亮入口)
 		List<HighlightEntry<TbItem>> entryList = page.getHighlighted();
 		for(HighlightEntry<TbItem> entry:entryList  ){
@@ -184,7 +187,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		GroupOptions groupOptions=new GroupOptions().addGroupByField("item_category");  //group by ...
 		query.setGroupOptions(groupOptions);
 		//获取分组页
-		GroupPage<TbItem> page = solrTemplate.queryForGroupPage(query, TbItem.class);
+		GroupPage<TbItem> page = solrTemplate.queryForGroupPage(coreName, query, TbItem.class);
 		//获取分组结果对象
 		GroupResult<TbItem> groupResult = page.getGroupResult("item_category");
 		//获取分组入口页
@@ -229,8 +232,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
 	@Override
 	public void importList(List list) {
-		solrTemplate.saveBeans(list);
-		solrTemplate.commit();
+		solrTemplate.saveBeans(coreName, list);
+		solrTemplate.commit(coreName);
 	}
 
 
@@ -240,8 +243,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		Query query=new SimpleQuery("*:*");		
 		Criteria criteria=new Criteria("item_goodsid").in(goodsIds);
 		query.addCriteria(criteria);		
-		solrTemplate.delete(query);
-		solrTemplate.commit();
+		solrTemplate.delete(coreName, query);
+		solrTemplate.commit(coreName);
 	}
 	
 	
