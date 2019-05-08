@@ -8,7 +8,7 @@ app.service("uploadService",function($http){
 
 		return $http({
 			method:'post',
-			url:'../upload/uploadFile.do',
+			url:'../upload/uploadFiles',
 			data:formData,
 			headers:{'Content-Type':undefined} ,// Content-Type : text/html  text/plain   "multipart/form-data"
 			transformRequest: angular.identity

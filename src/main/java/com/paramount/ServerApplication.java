@@ -9,6 +9,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.http.HttpStatus;
  * Email szhz186@gmail.com
  */
 @SpringBootApplication
+@ComponentScan
 //@MapperScan(basePackages = "com.paramount", markerInterface =Mapper.class)
 public class ServerApplication {
 
@@ -25,7 +27,7 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-/*	@Bean
+	@Bean
 	public WebServerFactoryCustomizer<TomcatServletWebServerFactory> containerCustomizer() {
 
 		return (container -> {
@@ -35,7 +37,7 @@ public class ServerApplication {
 
 			container.addErrorPages(error401Page, error404Page, error500Page);
 		});
-	}*/
+	}
 	@Autowired
     private SolrClient solrClient;
 

@@ -3,30 +3,30 @@ app.service('contentService',function($http){
 	    	
 	//读取列表数据绑定到表单中
 	this.findAll=function(){
-		return $http.get('../shopping/content/findAll.do');
+		return $http.get('../shopping/content/findAll');
 	}
 	//分页 
 	this.findPage=function(page,rows){
-		return $http.get('../shopping/content/findPage.do?page='+page+'&rows='+rows);
+		return $http.get('../shopping/content/findPage?page='+page+'&rows='+rows);
 	}
 	//查询实体
 	this.findOne=function(id){
-		return $http.get('../shopping/content/findOne.do?id='+id);
+		return $http.get('../shopping/content/findOne?id='+id);
 	}
 	//增加 
 	this.add=function(entity){
-		return  $http.post('../shopping/content/add.do',entity );
+		return  $http.post('../shopping/content/add',entity );
 	}
 	//修改 
 	this.update=function(entity){
-		return  $http.post('../shopping/content/update.do',entity );
+		return  $http.post('../shopping/content/update',entity );
 	}
 	//删除
 	this.dele=function(ids){
-		return $http.get('../shopping/content/delete.do?ids='+ids);
+		return $http.get('../shopping/content/delete?ids='+ids);
 	}
 	//搜索
 	this.search=function(page,rows,searchEntity){
-		return $http.post('../shopping/content/search.do?page='+page+"&rows="+rows, searchEntity);
+		return $http.post('../shopping/content/search?page='+page+"&rows="+rows, searchEntity);
 	}    	
 });
