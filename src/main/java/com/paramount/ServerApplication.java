@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.data.solr.core.SolrTemplate;
@@ -24,7 +26,7 @@ public class ServerApplication {
 	}
 
 /*	@Bean
-	public EmbeddedServletContainerCustomizer containerCustomizer() {
+	public WebServerFactoryCustomizer<TomcatServletWebServerFactory> containerCustomizer() {
 
 		return (container -> {
 			ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/pages/error/401.html");
