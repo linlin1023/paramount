@@ -48,7 +48,7 @@ public class SolrJTest {
     private TbItemRepositories tbItemRepositories;
 
     @Test
-    public void testGet(){
+    public void testGetOne(){
         /*TbItem tbItem = tbItemRepositories.findById(Long.valueOf(1369289)).get();
         System.out.println(tbItem);*/
         TbItem tbItem = solrTemplate.getById(coreName, (Object) Long.valueOf(1369289), TbItem.class).get();
@@ -127,12 +127,12 @@ public class SolrJTest {
         //SELECT * from tb_item where category like "%New%" and brand like "%Max%";
         SimpleQuery simpleQuery = new SimpleQuery("*:*");
 
-        Criteria criterial = new Criteria("item_category").contains("New");
-        criterial = criterial.and("item_brand").contains("Max");
+        Criteria criterial = new Criteria("item_keywords").contains("First");
+      //  criterial = criterial.and("item_brand").contains("Max");
 
         simpleQuery.addCriteria(criterial);
 
-        simpleQuery.setOffset(20l);  //从第几条记录
+        simpleQuery.setOffset(0l);  //从第几条记录
         simpleQuery.setRows(20); //一页几条记录'
 
         ScoredPage<TbItem> page = solrTemplate.queryForPage(coreName, simpleQuery, TbItem.class);

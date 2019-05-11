@@ -27,11 +27,12 @@
         <link rel="stylesheet" href="css/nivo-slider.css">
 		<!-- style.css -->
         <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/index.css">
 		<!-- responsive.css -->
         <link rel="stylesheet" href="css/responsive.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
+    <body  ng-app="pinyougou" ng-controller = "searchController"  ng-init="">
 
          
 
@@ -94,7 +95,7 @@
 					<div class="row">
 						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 							<div class="logo">
-								<a href="index.html"><img src="img/logo.png" alt="" /></a>
+								<a href="index.html"><img src="img/logo-boxlot.png" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
@@ -104,52 +105,14 @@
 									<span class="tex_top_email"><i class="fa fa-envelope"></i>Email: <span class="">support@paramountmerchandise.co.nz</span></span>
 								</div>
 								<div class="search-box">
-									<form action="#">
+									<form>
 										<select name="#" id="select">
-											<option value="">All categories</option>
-											<option value="40">Accessories</option>
-											<option value="41">Clothing</option>
-											<option value="42">-Hoodies</option>
-											<option value="47">-T-shirts</option>
-											<option value="43">Men's</option>
-											<option value="50"> -Hats</option>
-											<option value="44">Music</option>
-											<option value="46">-Singles</option>
-											<option value="49">-Albums</option>
-											<option value="45">Posters</option>
-											<option value="48">Women's</option>
-											<option value="51">-Hats</option>
-											<option value="52">----Shoes</option>
-											<option value="53">----Scarves</option>
-											<option value="54">Jewellery</option>
-											<option value="55">---Rings</option>
-											<option value="56">----Gold Ring</option>
-											<option value="57">----platinum ring</option>
-											<option value="58">----Silver Ring</option>
-											<option value="59">----Diamond rings</option>
-											<option value="60">---Necklaces</option>
-											<option value="61">----Diamond necklaces</option>
-											<option value="62">----Pearl necklaces</option>
-											<option value="63">----Silver necklaces</option>
-											<option value="64">----Statement necklaces</option>
-											<option value="65">Equipments</option>
-											<option value="73">---Accessories</option>
-											<option value="78">----headphone</option>
-											<option value="79">----health</option>
-											<option value="80">----camera</option>
-											<option value="74">---beauty</option>
-											<option value="75">----run</option>
-											<option value="76">----evening</option>
-											<option value="77">----coats</option>
-											<option value="66">Watches</option>
-											<option value="67">Books</option>
-											<option value="68">Sports</option>
-											<option value="69">Gifts</option>											
+											<option value="" id="allcategory">All categories</option>
 										</select>
-										<input type="text" placeholder="Search...">
-										<button><i class="fa fa-search"></i></button>
+										<input type="text" ng-model="searchMap.keywords" placeholder="Search...">
+										<button ng-click="search()"><i class="fa fa-search"></i></button>
 									</form>
-								</div>								
+								</div>
 							</div>
 							<div class="header-bottom-right">
 								<div class="left-cart">
@@ -232,120 +195,9 @@
 							<div class="product-menu-title">
 								<h2>All categories <i class="fa fa-arrow-circle-down"></i></h2>
 							</div>
-							<div class="product_vmegamenu">
-								<ul>
-									<li>
-										<a href="#"><img src="img/menu-l/1.png" alt="" /> Automotive & Motorcycle</a></li>
-									<li>
-										<a href="#"><img src="img/menu-l/2.png" alt="" />Bags, Shoes & Accessories</a></li>
-									<li>
-										<a href="#"><img src="img/menu-l/3.png" alt="" /> Cameras & Photo</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/4.png" alt="" /> Computers & Networking</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/5.png" alt="" />Flashlights & Lamps</a>
-									</li>
-									<li>
-										<a href="#"  class="hover-icon"><img src="img/menu-l/6.png" alt="" />Laptops & Accessories</a>
-										<div class="vmegamenu">
-											<span>
-												<a href="#" class="vgema-title">Linux</a>
-												<a href="#">Edubuntu</a>
-												<a href="#">Kubuntu</a>
-												<a href="#">Lubuntu</a>
-												</span>
-												<span>
-													<a href="#" class="vgema-title">Mac </a>
-													<a href="#">Mac OS X 10.0</a>
-													<a href="#">Mac OS X 10.7</a>
-													<a href="#">OS X 10.11</a>
-												</span>
-											<span>
-												<a href="#" class="vgema-title">Ubuntu</a>
-												<a href="#">Ubuntu Server</a>
-												<a href="#">Ubuntu Studio</a>
-												<a href="#">Ubuntu TV</a>
-											</span>
-											<span>
-												<a href="#" class="vgema-title">Windows</a>
-												<a href="#">Windows 10</a>
-												<a href="#">Windows 7</a>
-												<a href="#">Windows 8.1</a>
-											</span>
-										</div>										
-									</li>
-									<li>
-										<a href="#" class="hover-icon"><img src="img/menu-l/12.png" alt="" />Sports & Outdoors</a>
-										<div class="vmegamenu">
-											<span>
-												<a href="#" class="vgema-title">Electronic</a>
-												<a href="#">Bedroom</a>
-												<a href="#">Kitchen</a>
-												<a href="#">Living room</a>
-												<a href="#">Out door</a>
-											</span>
-											<span>
-												<a href="#" class="vgema-title">Lights</a>
-												<a href="#">All lights</a>
-												<a href="#">Bed room</a>
-												<a href="#">Living room</a>
-												<a href="#">Out door</a>
-											</span>
-											<span>
-												<a href="#" class="vgema-title">Television</a>
-												<a href="#">Samsung</a>
-												<a href="#">Samsung Oled</a>
-												<a href="#">Sony</a>
-												<a href="#">Sony Bravia</a>
-											</span>
-											<span>
-												<a href="#" class="vgema-title">Washing</a>
-												<a href="#">Commercial</a>
-												<a href="#">Front-Load </a>
-												<a href="#">Pedestal </a>
-												<a href="#">Top-Load </a>
-											</span>
-										</div>										
-									</li>
-									<li>
-										<a href="#" class="hover-icon"><img src="img/menu-l/7.png" alt="" />Smartphone & Tablets</a>
-										<div class="vmegamenu vmegamenu2">
-											<span>
-												<a href="#" class="vgema-title">HandBags</a>
-												<a href="#">Kids</a>
-												<a href="#">Mens</a>
-												<a href="#">Student</a>
-												<a href="#">Women</a>
-											</span>
-											<span>
-												<a href="#" class="vgema-title">Clothing</a>
-												<a href="#">Children</a>
-												<a href="#">Kids</a>
-												<a href="#">Mens</a>
-												<a href="#">Womens</a>
-											</span>
-										</div>	
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/8.png" alt="" />Health & Beauty</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/9.png" alt="" />Toys & Hobbies</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/10.png" alt="" />Holiday Supplies & Gifts</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/11.png" alt="" />Jewelry & Watches</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/5.png" alt="" />Smartphone & Watches</a>
-									</li>
-									<li>
-										<a href="#"><img src="img/menu-l/4.png" alt="" />Health Watches</a>
-									</li>
+							<div class="product_vmegamenu">  <!---category menu--->
+								<ul id="categoriesSiderBar">
+
 								</ul>
 							</div>
 						</div>	
@@ -591,8 +443,8 @@
 					</div>
 					<div class="col-md-9 col-sm-8">
 						<h2 class="page-heading mt-40">
-							<span class="cat-name">Sofa</span>
-							<span class="heading-counter">There are 13 products.</span>
+							<span class="cat-name">{{searchMap.keywords}}</span>
+							<span class="heading-counter">There are {{resultMap.total}} products.</span>
 						</h2>
 						<div class="shop-page-bar">
 							<div>	
@@ -637,24 +489,32 @@
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="home">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-6">
+											<div class="col-lg-4 col-md-4 col-sm-6" ng-repeat = "pojo in resultMap.rows">
 												<div class="single-product mb-30  white-bg">
 													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+														<a href="#"><img class="productImagellp" src="{{pojo.image}}" alt="" /></a>
 													</div>
 													<div class="product-content product-i">
 														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
+															<h4><a href="product-details.html" class="titlellp">{{pojo.title}}</a></h4>
 														</div>
+
 														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
+															<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
+															<a href="#" ng-if="pojo.stars[0]"><i class="fa fa-star"></i></a>
+															<a href="#" ng-if="pojo.stars[1]"><i class="fa fa-star"></i></a>
+															<a href="#" ng-if="pojo.stars[2]"><i class="fa fa-star"></i></a>
+															<a href="#" ng-if="pojo.stars[3]"><i class="fa fa-star"></i></a>
+															<a href="#" ng-if="pojo.stars[4]"><i class="fa fa-star"></i></a>
+															<a href="#" ng-if="!pojo.stars[0]"><i class="fa fa-star-o"></i></a>
+															<a href="#" ng-if="!pojo.stars[1]"><i class="fa fa-star-o"></i></a>
+															<a href="#" ng-if="!pojo.stars[2]"><i class="fa fa-star-o"></i></a>
+															<a href="#" ng-if="!pojo.stars[3]"><i class="fa fa-star-o"></i></a>
+															<a href="#" ng-if="!pojo.stars[4]"><i class="fa fa-star-o"></i></a>
 														</div>
+
 														<div class="price-box">
-															<span class="price product-price">$400.00</span>
+															<span class="price product-price">${{pojo.price}}</span>
 														</div>
 														<div class="product-icon">
 															<div class="product-icon-left f-left">
@@ -667,359 +527,7 @@
 														</div>
 													</div>
 													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30  white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/3.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/4.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30  white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/5.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/6.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/7.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/8.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/9.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/10.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/11.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/12.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6">
-												<div class="single-product mb-30 white-bg">
-													<div class="product-img pt-20">
-														<a href="#"><img src="img/product/2.jpg" alt="" /></a>
-													</div>
-													<div class="product-content product-i">
-														<div class="pro-title">
-															<h4><a href="product-details.html">Moebius Table</a></h4>
-														</div>
-														<div class="pro-rating ">
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div>
-														<div class="price-box">
-															<span class="price product-price">$400.00</span>
-														</div>
-														<div class="product-icon">
-															<div class="product-icon-left f-left">
-																<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-															</div>
-															<div class="product-icon-right floatright">
-																<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-																<a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-															</div>
-														</div>
-													</div>
-													<span class="new">new</span>
-												</div>											
+												</div>
 											</div>
 										</div>
 										<div class="content-sortpagibar">
@@ -1236,7 +744,7 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 						<div class="newletter-logo">
-							<a href="#"><img src="img/logo.png" alt="" /></a>
+							<a href="#"><img src="img/logo-boxlot.png" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -1418,6 +926,13 @@
         <script src="js/plugins.js"></script>
 		<!-- main.js -->
         <script src="js/main.js"></script>
+
+
+		<script src="js/index.js"></script>
+		<script src="js/angularjs/angular.min.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/service/searchService.js"></script>
+		<script src="js/controller/searchController.js"></script>
     </body>
 </html>
 
