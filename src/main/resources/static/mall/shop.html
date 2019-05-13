@@ -12,7 +12,7 @@
 				
 		<!-- all css here -->
 		<!-- bootstrap.min.css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<!-- font-awesome.min.css -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
 		<!-- owl.carousel.css -->
@@ -357,88 +357,20 @@
 		</div>
 		<!-- breadcrumb end -->	
 		<!-- shop-area start -->
+		{{specMapOfRows}}
 		<div class="shop-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-4">
 						<div class="column mt-55">
 							<h2 class="title-block">Catalog</h2>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Availability</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#">In stock <span>(13)</span></a></li>
-									<li><a href="#">In stock <span>(13)</span></a></li>
+							<div class="sidebar-widget" ng-repeat = "spec in specMapOfRows">
+								<h3 class="sidebar-title">{{spec.key}} {{spec.value}}</h3>
+								<ul class="sidebar-menu" ng-repeat = "option in value">
+									<li><a href="#">{{option}} <span>(13)</span></a></li>
 								</ul>
 							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Condition</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#">New <span>(11)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Manufacturer</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#"> Fashion Manufacturer  <span>(13)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Manufacturer</h3>
-								<div class="price-filter">
-									<p>
-									  <label for="amount">Range:</label>
-									  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-									</p> 
-									<div id="slider-range"></div>
-								</div>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Size</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#"> S  <span>(13)</span></a></li>
-									<li><a href="#"> M  <span>(15)</span></a></li>
-									<li><a href="#"> L  <span>(6)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Size</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#"> Beige  <span>(2)</span></a></li>
-									<li><a href="#"> White <span>(4)</span></a></li>
-									<li><a href="#"> Black  <span>(4)</span></a></li>
-									<li><a href="#"> Orange   <span>(6)</span></a></li>
-									<li><a href="#"> Blue  <span>(4)</span></a></li>
-									<li><a href="#"> Green  <span>(1)</span></a></li>
-									<li><a href="#"> Yellow  <span>(5)</span></a></li>
-									<li><a href="#">  Pink <span>(2)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Compositions</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#">  Cotton  <span>(2)</span></a></li>
-									<li><a href="#"> Polyester <span>(4)</span></a></li>
-									<li><a href="#"> Viscose  <span>(4)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Styles</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#">   Casual  <span>(2)</span></a></li>
-									<li><a href="#"> Dressy  <span>(4)</span></a></li>
-									<li><a href="#"> Girly  <span>(4)</span></a></li>
-								</ul>
-							</div>
-							<div class="sidebar-widget">
-								<h3 class="sidebar-title">Properties</h3>
-								<ul class="sidebar-menu">
-									<li><a href="#">Colorful Dress <span>(2)</span></a></li>
-									<li><a href="#">Maxi Dress <span>(4)</span></a></li>
-									<li><a href="#">Midi Dress <span>(4)</span></a></li>
-									<li><a href="#">Short Dress <span>(3)</span></a></li>
-									<li><a href="#">Short Sleeve <span>(2)</span></a></li>
-								</ul>
-							</div>
+
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-8">

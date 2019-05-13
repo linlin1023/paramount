@@ -61,6 +61,7 @@ public class TbItem implements Serializable{
 
     private String sellerId;
 
+    @Field("item_cartThumbnail")
     private String cartThumbnail;
 
     @Field("item_category")
