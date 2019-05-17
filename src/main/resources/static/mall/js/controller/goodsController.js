@@ -31,7 +31,7 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 				$scope.entity= response;	
 				
 				// 调用处理富文本编辑器：
-				editor.html($scope.entity.goodsDesc.introduction);
+				editor.html(entity.goodsDesc.introduction);
 				
 				// 处理图片列表，因为图片信息保存的是JSON的字符串，让前台识别为JSON格式对象
 				$scope.entity.goodsDesc.itemImages = JSON.parse( $scope.entity.goodsDesc.itemImages );

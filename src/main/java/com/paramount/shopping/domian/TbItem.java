@@ -83,7 +83,8 @@ public class TbItem implements Serializable{
 
     private String SKU;
 
-    private Integer soldCount;
+    private Integer soldCount;  //记录销售出去的数量
+    private TbGoodsDesc goodsDesc;
 
     public Integer getSoldCount() {
         return soldCount;
@@ -326,5 +327,13 @@ public class TbItem implements Serializable{
                 ", SKU='" + SKU + '\'' +
                 ", soldCount=" + soldCount +
                 '}';
+    }
+
+    public void setGoodsDesc(TbGoodsDesc goodsDesc) {
+        this.goodsDesc = goodsDesc;
+    }
+
+    public TbGoodsDesc getGoodsDesc(){
+        return this.goodsDesc;
     }
 }

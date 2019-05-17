@@ -1,5 +1,5 @@
  //控制层 
-app.controller('itemController' , function($scope,$controller,itemService, contentService){	  //
+app.controller('itemController' , function($scope,$location,$controller,itemService, contentService){	  //
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -66,10 +66,17 @@ app.controller('itemController' , function($scope,$controller,itemService, conte
 	$scope.findOne=function(id){				
 		itemService.findOne(id).success(
 			function(response){
-				$scope.entity= response;					
+				$scope.entity= response;
+				$scope.entity.specificationItems = JSON.parse($scope.entity.spec?$scope.entity.spec:"" );
+				$scope.rating([$scope.entity])
 			}
 		);				
 	}
+
+	$scope.findOneFromRequestId=function(){
+    		var id = $location.search()['id'];
+    		$scope.findOne(id)
+    }
 	
 
 	

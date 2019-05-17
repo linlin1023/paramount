@@ -1,12 +1,17 @@
-app.controller('searchController', function($scope,searchService){
+app.controller('searchController', function($scope,$controller,searchService){
+
+    $controller('baseController',{$scope:$scope});//继承
 
     $scope.search = function(){
-        $scope.specMapOfRows = new Map();  //初始化新建一个map
-        var options=$("#select option:selected");  //获取选中的项
-        console.log(options.val());   //拿到选中项的值
-        console.log(options.text());   //拿到选中项的文本
+        $scope.specMapOfRows = {};  //初始化新建一个map
+       // var options=$("#select option:selected");  //获取选中的项
+       //pageNo pageSize  category
+       $scope.searchMap.pageNo = $scope.paginationConf.currentPage;
+       $scope.searchMap.pageSize = $scope.paginationConf.itemsPerPage;
+       $scope.searchMap.category = $("#select option:selected").text();
         searchService.search($scope.searchMap).success(
             function(response){
+                $scope.paginationConf.totalItems = response.total;
                 $scope.resultMap = response;
                 $scope.rating($scope.resultMap.rows);
                 $scope.constructRows($scope.resultMap.rows)
@@ -34,14 +39,16 @@ app.controller('searchController', function($scope,searchService){
                       {
                         	if($scope.specMapOfRows[key]){ //存在当前的规格对应的数据，取出来不为空不为undefined
                         	    var valueSet  = $scope.specMapOfRows[key];
-                        	    valueSet.add(list[entity].specMap[key]);
+                        	    valueSet.push(list[entity].specMap[key]);
                         	}else {
-                                var valueSet = new Set();
-                                valueSet.add(list[entity].specMap[key]);
+                                var valueSet = [];
+                                valueSet.push(list[entity].specMap[key]);
                                 $scope.specMapOfRows[key] = valueSet;
                         	}
                       }
                 }
-                $scope.specMapOfRows["test"]= new Set(["mytest","asfd"]);
      }
+
+
+
 });

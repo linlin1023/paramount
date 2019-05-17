@@ -1,7 +1,11 @@
 package com.paramount.shopping.service.impl;
 import java.util.List;
 
+import com.paramount.shopping.dao.TbAddressMapper;
+import com.paramount.shopping.dao.TbGoodsDescMapper;
+import com.paramount.shopping.dao.TbGoodsMapper;
 import com.paramount.shopping.dao.TbItemMapper;
+import com.paramount.shopping.domian.TbGoodsDesc;
 import com.paramount.shopping.domian.TbItem;
 import com.paramount.shopping.domian.TbItemExample;
 import com.paramount.shopping.domian.response.PageResult;
@@ -21,7 +25,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	private TbItemMapper itemMapper;
-	
+	@Autowired
+	private TbGoodsDescMapper goodsDescMapper;
+
 	/**
 	 * 查询全部
 	 */
@@ -64,7 +70,11 @@ public class ItemServiceImpl implements ItemService {
 	 */
 	@Override
 	public TbItem findOne(Long id){
-		return itemMapper.selectByPrimaryKey(id);
+		TbItem item = itemMapper.selectByPrimaryKey(id);
+
+		TbGoodsDesc tbGoodsDesc = goodsDescMapper.selectByPrimaryKey(id);
+		item.setGoodsDesc(tbGoodsDesc);
+		return item;
 	}
 
 	/**
