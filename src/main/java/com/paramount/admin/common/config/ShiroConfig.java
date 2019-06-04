@@ -43,12 +43,17 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/sys/login/**", "anon");
         filterChainDefinitionMap.put("/files/*", "anon");
+        filterChainDefinitionMap.put("/mall/**","anon");//llp filter out the stuffs under the mall
+        filterChainDefinitionMap.put("/shopping/**","anon"); // llp , as the html has to access data, i wanna make it only html can access
+        filterChainDefinitionMap.put("/favicon.ico","anon"); // llp
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/**", "authc");
+       // filterChainDefinitionMap.put("/shopping/**.html", "authc"); // llp, doesnot function
 
         shiroFilterFactoryBean.setLoginUrl("/login.html");
         shiroFilterFactoryBean.setSuccessUrl("/index.html");
         shiroFilterFactoryBean.setUnauthorizedUrl("/pages/error/403.html");
+        //shiroFilterFactoryBean.setUnauthorizedUrl("/login.html");
         LogoutFilter logoutFilter = new LogoutFilter();
         logoutFilter.setRedirectUrl("/login.html");
 

@@ -1,5 +1,6 @@
 package com.paramount.shopping.controller;
 import java.util.List;
+import java.util.Map;
 
 import com.paramount.shopping.domian.TbItem;
 import com.paramount.shopping.domian.response.PageResult;
@@ -80,7 +81,7 @@ public class ItemController {
 	 */
 	@RequestMapping("/findOne")
 	public TbItem findOne(Long id){
-		return itemService.findOne(id);		
+		return itemService.findOne(id);
 	}
 	
 	/**
@@ -108,6 +109,11 @@ public class ItemController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbItem item, int page, int rows  ){ //post 请求有requestbody,  requestparam不用加注解
 		return itemService.findPage(item, page, rows);		
+	}
+
+	@RequestMapping("/searchByText")
+	public PageResult searchByText(@RequestBody Map searchMap, int page, int rows  ){ //post 请求有requestbody,  requestparam不用加注解
+		return itemService.findPageByText(String.valueOf(searchMap.get("keywords")), page, rows);
 	}
 
 	@RequestMapping("/findTopSeller")

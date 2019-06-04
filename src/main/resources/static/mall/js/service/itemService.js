@@ -19,6 +19,11 @@ app.service('itemService',function($http){
 		return $http.post('../shopping/item/search?page='+page+"&rows="+rows, searchEntity);
 	}
 
+		//搜索
+    	this.searchByText=function(page,rows,keywords){
+    		return $http.post('../shopping/item/searchByText?page='+page+"&rows="+rows, keywords);
+    	}
+
 	this.findNewArrival=function(){
 	    return $http.get('../shopping/item/findNew');
 	}

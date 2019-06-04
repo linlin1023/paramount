@@ -12,7 +12,7 @@
 				
 		<!-- all css here -->
 		<!-- bootstrap.min.css -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 		<!-- font-awesome.min.css -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
 		<!-- owl.carousel.css -->
@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="css/responsive.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body  ng-app="pinyougou" ng-controller = "searchController"  ng-init="">
+    <body  ng-app="pinyougou" ng-controller = "searchController" >
 
          
 
@@ -109,8 +109,8 @@
 										<select name="#" id="select">
 											<option value="" id="allcategory">All categories</option>
 										</select>
-										<input type="text" ng-model="searchMap.keywords" placeholder="Search...">
-										<button ng-click="search()"><i class="fa fa-search"></i></button>
+										<input type="text" ng-model="keywords" placeholder="Search...">
+										<button type="button" ng-click="clearParamFirst()"><i class="fa fa-search"></i></button>
 									</form>
 								</div>
 							</div>
@@ -366,7 +366,7 @@
 							<div class="sidebar-widget" ng-repeat = "(key, value) in specMapOfRows">
 								<h3 class="sidebar-title">{{key}}</h3>
 								<ul class="sidebar-menu" ng-repeat = "option in value">
-									<li><a href="#">{{option}} <span>(13)</span></a></li>
+									<li><a href="#">{{option}} <span>({{value.length}}{{value.size}})</span></a></li>
 								</ul>
 							</div>
 
@@ -400,21 +400,20 @@
 											</select>
 										</form>
 									</div>
-									<div class="selector-field f-left ml-30 hidden-xs">
+									<!--<div class="selector-field f-left ml-30 hidden-xs">
+									selection of page option
 										<form action="#">
 											<label>Show</label>
-											<select name="select">
-												<option value="">12</option>
-												<option value="">13</option>
-												<option value="">14</option>
+											<select name="select" onselect="updateOption()">
+												<option value="{{option}}" ng-repeat="option in paginationConf.perPageOptions">{{option}}</option>
 											</select>
 										</form>
-									</div>
-									<div class="selector-field f-right ml-30">
+									</div>-->
+									<!--<div class="selector-field f-right ml-30">
 										<form action="#">
 											<button class="compare">Compare (1)</button>
 										</form>
-									</div>
+									</div>-->
 								</div>	
 								<!-- Tab panes -->
 								<div class="tab-content">
@@ -462,19 +461,13 @@
 											</div>
 										</div>
 										<div class="content-sortpagibar">
-											<div class="product-count display-inline">Showing 1 - 12 of 13 items</div>
-											<ul class="shop-pagi display-inline">
-												<li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-											</ul>
-											<div class="selector-field f-right">
+											<!-- 分页 -->
+											<tm-pagination conf="paginationConf"></tm-pagination>
+											<!--<div class="selector-field f-right">
 												<form action="#">
 													<button class="compare">Compare (1)</button>
 												</form>
-											</div>												
+											</div>		-->
 										</div>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="profile">
@@ -609,13 +602,13 @@
 											</div>
 										</div>
 										<div class="content-sortpagibar">
-											<div class="product-count display-inline">Showing 1 - 12 of 13 items</div>
+											<div class="product-count display-inline">Showing ({{paginationConf.itemsPerPage}}*({{paginationConf.currentPage}}-1)+1) - {{paginationConf.itemsPerPage}}*{{paginationConf.currentPage}} of {{resultMap.total}} items</div>
 											<ul class="shop-pagi display-inline">
-												<li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-												<li class="active"><a href="#">1</a></li>
+												<!--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>-->
+												<li class="active" ng-if = " i <=  numOfPage"><a href="#">{{numOfPage}}</a></li>
 												<li><a href="#">2</a></li>
 												<li><a href="#">3</a></li>
-												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+												<!--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>-->
 											</ul>
 											<div class="selector-field f-right">
 												<form action="#">
@@ -864,11 +857,13 @@
 		<!-- 引入分页相关的JS和CSS -->
 		<script type="text/javascript" src="js/plugins/pagination.js"></script>
 		<link rel="stylesheet" href="js/plugins/pagination.css">
-		<script type="text/javascript" src="js/base_pagination.js"></script>
-		<script type="text/javascript" src="js/controller/baseController.js"></script>
+		<script src="js/base_pagination.js"></script>
+		<script src="js/controller/baseController.js"></script>
 
 		<script src="js/service/searchService.js"></script>
+		<script src="js/service/itemService.js"></script>
 		<script src="js/controller/searchController.js"></script>
+
     </body>
 </html>
 

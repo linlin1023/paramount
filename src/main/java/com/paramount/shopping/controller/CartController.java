@@ -12,9 +12,7 @@ import com.paramount.shopping.service.CartService;
 import com.paramount.shopping.utils.CookieUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
 
@@ -34,7 +32,11 @@ public class CartController {
 	@RequestMapping("/findCartList")
 	public List<Cart> findCartList(){
 		//当前登录人账号
-		String username = ((TbUser)SecurityUtils.getSubject().getPrincipal()).getUsername();
+		String username = null;
+		if(SecurityUtils.getSubject().getPrincipal() == null)
+			username = "anonymousUser";
+		else
+			username = ((TbUser)SecurityUtils.getSubject().getPrincipal() ).getUsername();
 		System.out.println("当前登录人："+username);
 		
 		String cartListString = CookieUtil.getCookieValue(request, "cartList", "UTF-8");
@@ -67,15 +69,19 @@ public class CartController {
 				
 	}
 	
-	@RequestMapping("/addGoodsToCartList")
-	@CrossOrigin(origins="http://localhost:9105")
-	public Result addGoodsToCartList(Long itemId, Integer num){
+	@PostMapping("/addGoodsToCartList")
+	//@CrossOrigin(origins="http://localhost:9105")
+	public Result addGoodsToCartList(Long itemId,  Integer num){
 		
 		//response.setHeader("Access-Control-Allow-Origin", "http://localhost:9105");//可以访问的域(当此方法不需要操作cookie)
-		//response.setHeader("Access-Control-Allow-Credentials", "true");//如果操作cookie，必须加上这句话
+		response.setHeader("Access-Control-Allow-Credentials", "true");//如果操作cookie，必须加上这句话
 		
 		//当前登录人账号
-        String name = ((TbUser)SecurityUtils.getSubject().getPrincipal()).getUsername();
+		String name = null;
+		if(SecurityUtils.getSubject().getPrincipal() == null)
+			name = "anonymousUser";
+		else
+			name = ((TbUser)SecurityUtils.getSubject().getPrincipal()).getUsername();
 		System.out.println("当前登录人："+name);
 		
 	

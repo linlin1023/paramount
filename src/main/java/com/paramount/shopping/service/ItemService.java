@@ -61,4 +61,6 @@ public interface ItemService {
 	List<TbItem> findTopSeller(int num);
 
     List<TbItem> findNew();
+
+    PageResult findPageByText(String text, int page, int rows);
 }

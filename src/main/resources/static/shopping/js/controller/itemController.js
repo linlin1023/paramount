@@ -1,5 +1,5 @@
  //控制层 
-app.controller('itemController' ,function($scope,$controller   ,itemService){	
+app.controller('itemController' ,function($scope,$controller   ,itemService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -13,7 +13,7 @@ app.controller('itemController' ,function($scope,$controller   ,itemService){
 	}    
 	
 	//分页
-	$scope.findPage=function(page,rows){			
+	$scope.findPage=function(page,rows){ //page 当前页码， rows是一页有几行
 		itemService.findPage(page,rows).success(
 			function(response){
 				$scope.list=response.rows;	

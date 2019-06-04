@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.paramount.ServerApplication;
 import com.paramount.shopping.dao.TbItemMapper;
 import com.paramount.shopping.domian.TbItem;
+import com.paramount.shopping.domian.response.PageResult;
 import com.paramount.shopping.repository.TbItemRepositories;
+import com.paramount.shopping.service.ItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=ServerApplication.class)
@@ -36,6 +39,25 @@ public class SolrJTest {
 
     @Value("${spring.data.solr.core}")
     private String coreName;
+
+
+    @Autowired
+    ItemService itemService;
+
+    @Test
+    public void testFindPageByText(){
+        PageResult listOfResult1 =  itemService.findPageByText("baby", 1, 2);
+        PageResult listOfResult2 =  itemService.findPageByText("baby", 2, 2);
+        PageResult listOfResult3 =  itemService.findPageByText("baby", 3, 2);
+        PageResult listOfResult4 =  itemService.findPageByText("baby", 4, 2);
+        System.out.println("==========**********==========-------------" + listOfResult1.getRows().size());
+        System.out.println("==========**********==========-------------" + listOfResult2.getRows().size());
+        System.out.println("==========**********==========-------------" + listOfResult3.getRows().size());
+        System.out.println("==========**********==========-------------" + listOfResult4.getRows().size());
+        System.out.println("debug");
+    }
+
+
     @Test
     public  void test(){
         TbItem tbItem = tbItemMapper.selectByPrimaryKey(1369289l);

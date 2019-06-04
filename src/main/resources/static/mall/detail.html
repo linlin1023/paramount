@@ -366,16 +366,17 @@
 									</div>
 									<!--<span class="review-no">41 reviews</span>-->
 								</div>
-								<p class="product-description">{{entity.goodsDesc.introduction}}</p>
-								<h4 class="price">current price: <span>${{entity.marketPrice}}</span></h4>
-								<!--<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>-->
+								<div class="product-description-div"><p class="product-description">{{entity.goodsDesc.introduction}}</p></div>
 
+								<div><h4 class="price">current price: <span>${{entity.marketPrice}}</span></h4></div>
+								<!--<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>-->
 
 								<h5 class="sizes" ng-repeat = "spec in entity.specificationItems">{{spec.attributeName}}
 
 									<span class="size" data-toggle="tooltip" title="{{specValue}}" ng-if="spec.attributeName !== 'Colors'" ng-repeat="specValue in spec.attributeValue">{{specValue}}</span>
 									<span class="color {{specValue}}"  ng-if="spec.attributeName === 'Colors'" ng-repeat="specValue in spec.attributeValue" ></span>
 								</h5>
+
 								<!--<h5 class="colors">colors:
 									<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
 									<span class="color green"></span>

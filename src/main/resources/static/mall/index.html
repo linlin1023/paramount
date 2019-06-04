@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -31,7 +31,7 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body ng-app="pinyougou" ng-controller = "itemController"  ng-init="findAll();findNewArrival();findTopSeller(15);findAllAdvertisement()">
+<body ng-app="pinyougou" ng-controller = "itemController"  ng-init="findAll();findNewArrival();findTopSeller(15);findAllAdvertisement();findCartList()">
 
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -87,8 +87,8 @@
 								<select name="#" id="select">
 									<option value="" id="allcategory">All categories</option>
 								</select>
-								<input type="text" placeholder="Search...">
-								<button><i class="fa fa-search"></i></button>
+								<input ng-model="keywords" type="text" placeholder="Search...">
+								<a href = "shop.html#?keywords={{keywords}}"><button type="button" ><i class="fa fa-search"></i></button></a>
 							</form>
 						</div>
 					</div>
@@ -105,8 +105,8 @@
 									<div class="top-cart-title">
 										<a href="#">
 											<span class="title-cart">my cart</span>
-											<span class="count-item">2 items</span>
-											<span class="price">$444.00</span>
+											<span class="count-item">{{cartTotalItems}} items</span>
+											<span class="price">${{cartTotalPrice}}</span>
 										</a>
 									</div>
 									<div class="top-cart-content">
@@ -282,7 +282,7 @@
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html" class="titlellp">{{pair.first.title}}</a></h4>
+										<h4><a href="detail.html#?id={{pair.first.id}}" class="titlellp">{{pair.first.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<a href="#" ng-if="pair.first.stars[0]"><i class="fa fa-star"></i></a>
@@ -301,7 +301,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.first.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>					
@@ -312,7 +312,7 @@
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html" class="titlellp">{{pair.second.title}}</a></h4>
+										<h4><a href="detail.html#?id={{pair.second.id}}" class="titlellp">{{pair.second.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<a href="#" ng-if="pair.second.stars[0]"><i class="fa fa-star"></i></a>
@@ -331,7 +331,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.second.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -342,7 +342,7 @@
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html" class="titlellp">{{pair.third.title}}</a></h4>
+										<h4><a href="detail.html#?id={{pair.third.id}}" class="titlellp">{{pair.third.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<a href="#" ng-if="pair.third.stars[0]"><i class="fa fa-star"></i></a>
@@ -361,7 +361,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.third.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -372,7 +372,7 @@
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html" class="titlellp">{{pair.fourth.title}}</a></h4>
+										<h4><a href="detail.html#?id={{pair.fourth.id}}" class="titlellp">{{pair.fourth.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<a href="#" ng-if="pair.fourth.stars[0]"><i class="fa fa-star"></i></a>
@@ -391,7 +391,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.fourth.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -402,7 +402,7 @@
 								</div>
 								<div class="product-content product-content-right">
 									<div class="pro-title">
-										<h4><a href="product-details.html" class="titlellp">{{pair.fifth.title}}</a></h4>
+										<h4><a href="detail.html#?id={{pair.fifth.id}}" class="titlellp">{{pair.fifth.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<a href="#" ng-if="pair.fifth.stars[0]"><i class="fa fa-star"></i></a>
@@ -421,7 +421,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.fifth.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -442,7 +442,7 @@
 							</div>
 							<div class="product-content">
 								<div class="pro-title">
-									<h4><a href="product-details.html">{{specialProduct.title}}</a></h4>
+									<h4><a href="detail.html#?id={{specialProduct.id}}">{{specialProduct.title}}</a></h4>
 								</div>
 								<div class="pro-rating ">
 									<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
@@ -462,7 +462,7 @@
 								</div>
 								<div class="product-icon">
 									<div class="product-icon-left f-left">
-										<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+										<a ng-click="saveToCartList({{specialProduct.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 									</div>
 									<div class="product-icon-right floatright">
 										<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -550,7 +550,7 @@
 							</div>
 							<div class="product-content product-i">
 								<div class="pro-title">
-									<h4><a class="titlellp" href="product-details.html">{{entity.title}}</a></h4>
+									<h4><a class="titlellp" href="detail.html#?id={{entity.id}}">{{entity.title}}</a></h4>
 								</div>
 								<div class="pro-rating ">
 									<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
@@ -570,7 +570,7 @@
 								</div>
 								<div class="product-icon">
 									<div class="product-icon-left f-left">
-										<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+										<a ng-click="saveToCartList({{entity.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 									</div>
 									<div class="product-icon-right floatright">
 										<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -605,7 +605,7 @@
 								</div>
 								<div class="product-content product-i">
 									<div class="pro-title">
-										<h4><a  class="titlellp"  href="product-details.html">{{pair.first.title}}</a></h4>
+										<h4><a  class="titlellp"  href="detail.html#?id={{pair.first.id}}">{{pair.first.title}}</a></h4>
 									</div>
 
 									<div class="pro-rating ">
@@ -628,7 +628,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList({{pair.first.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 										<div class="product-icon-right floatright">
 											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -644,7 +644,7 @@
 								</div>
 								<div class="product-content product-i">
 									<div class="pro-title">
-										<h4><a class="titlellp"  href="product-details.html">{{pair.second.title}}</a></h4>
+										<h4><a class="titlellp"  href="detail.html#?id={{pair.second.id}}">{{pair.second.title}}</a></h4>
 									</div>
 									<div class="pro-rating ">
 										<!--<span *ngFor="let star of stars" class=" fa-star fa-star-o"><i class="fa fa-star"></i>-->
@@ -664,7 +664,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<button ng-click="saveToCartList({{pair.second.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
 										</div>
 										<div class="product-icon-right floatright">
 											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -1001,6 +1001,8 @@
 <script src="js/directive/onFinishRender.js"></script>
 <script src="js/directive/onFinishRenderTopseller.js"></script>
 <script src="js/service/contentService.js"></script>
+<script src="js/service/cartService.js"></script>
+
 
 </body>
 </html>

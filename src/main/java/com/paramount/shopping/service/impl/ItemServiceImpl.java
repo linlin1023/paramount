@@ -1,6 +1,8 @@
 package com.paramount.shopping.service.impl;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
 import com.paramount.shopping.dao.TbAddressMapper;
 import com.paramount.shopping.dao.TbGoodsDescMapper;
 import com.paramount.shopping.dao.TbGoodsMapper;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * 服务实现层
@@ -46,6 +49,8 @@ public class ItemServiceImpl implements ItemService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+
+
 	/**
 	 * 增加
 	 */
@@ -72,7 +77,7 @@ public class ItemServiceImpl implements ItemService {
 	public TbItem findOne(Long id){
 		TbItem item = itemMapper.selectByPrimaryKey(id);
 
-		TbGoodsDesc tbGoodsDesc = goodsDescMapper.selectByPrimaryKey(id);
+		TbGoodsDesc tbGoodsDesc = goodsDescMapper.selectByPrimaryKey(item.getGoodsId());
 		item.setGoodsDesc(tbGoodsDesc);
 		return item;
 	}
@@ -86,9 +91,45 @@ public class ItemServiceImpl implements ItemService {
 			itemMapper.deleteByPrimaryKey(id);
 		}		
 	}
-	
-	
-		@Override
+
+	@Override
+	public PageResult findPageByText( String keywords, int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
+		List<String> keywordsToken = tokenizeForKeywords(keywords);
+
+		TbItemExample example=new TbItemExample();
+		TbItemExample.Criteria criteria = example.createCriteria();
+
+
+		if(keywordsToken != null && keywordsToken.size() > 0){
+			for(String keyword : keywordsToken){
+				//keyword
+				criteria.andTitleLike("%"+keyword+"%");
+				example.or(example.createCriteria().andCategoryLike("%"+keyword+"%"));
+				example.or(example.createCriteria().andBrandLike("%"+keyword+"%"));
+			}
+		}
+		Page<TbItem> page= (Page<TbItem>)itemMapper.selectByExample(example);
+		return new PageResult(page.getTotal(), page.getResult());
+	}
+
+	private List<String> tokenizeForKeywords(String keywords) {
+		List<String> keywordsTokens = Lists.newArrayList(keywords.split("\\W+"));
+		List<Integer> indexes = new ArrayList<>();
+		for(String item : keywordsTokens){
+			if(item.length() == 0)
+			{
+				indexes.add(keywordsTokens.indexOf(item));
+			}
+		}
+		for(int i : indexes){
+			keywordsTokens.remove(i);
+		}
+		return keywordsTokens;
+	}
+
+
+	@Override
 	public PageResult findPage(TbItem item, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		
@@ -159,5 +200,6 @@ public class ItemServiceImpl implements ItemService {
 		List<TbItem>  listOfNew = itemMapper.selectByExample(example);
 		return listOfNew;
 	}
+
 
 }

@@ -2,7 +2,11 @@
 app.controller('itemController' , function($scope,$location,$controller,itemService, contentService){	  //
 	
 	$controller('baseController',{$scope:$scope});//继承
-	
+
+	/*$scope.goToShop = function(){
+	     $location.href='shop.html?keywords='+ $scope.keywords;
+	}*/
+
     //读取列表数据绑定到表单中  
 	$scope.findAll=function(){
 		itemService.findAll().success(
@@ -91,6 +95,7 @@ app.controller('itemController' , function($scope,$location,$controller,itemServ
 			}			
 		);
 	}
+
 
 
     $scope.findNewArrival = function(){
