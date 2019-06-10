@@ -7,7 +7,6 @@ import java.util.Map;
 import com.paramount.admin.domain.Dict;
 
 /**
- * Created by szz on 2018/3/24 0:03.
  */
 @Mapper
 public interface DictDao{

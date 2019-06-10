@@ -11,6 +11,7 @@ app.service('itemCatService',function($http){
 	}
 	//查询实体
 	this.findOne=function(id){
+	   // if(id == undefined) return;
 		return $http.get('../itemCat/findOne?id='+id);
 	}
 	//增加 
@@ -31,6 +32,7 @@ app.service('itemCatService',function($http){
 	}    	
 	
 	this.findByParentId = function(parentId){
+	    if(parentId == undefined) return;
 		return $http.get("../itemCat/findByParentId?parentId="+parentId);
 	}
 });

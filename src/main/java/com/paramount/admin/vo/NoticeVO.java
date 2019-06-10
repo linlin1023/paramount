@@ -7,8 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by szz on 2018/4/5 12:27.
- * Email szhz186@gmail.com
  */
 public class NoticeVO implements Serializable{
 

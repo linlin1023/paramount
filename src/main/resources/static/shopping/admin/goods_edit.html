@@ -164,7 +164,7 @@
 									            	{{pojo.color}}
 									            </td>
 									            <td>
-									           		<img alt="" src="{{pojo.url}}" width="100px" height="100px">	            	 
+									           		<img alt="" ng-src="{{pojo.url}}" width="100px" height="100px">
 									            </td>
 												 <td> <button type="button" ng-click="remove_iamge_entity($index)" class="btn btn-default" title="{{'100009'|T}}" ><i class="fa fa-trash-o"></i> {{'100009'|T}}</button></td>
 					                      </tr>
@@ -300,7 +300,7 @@
 					                </button>	
 					            </td>
 								<td>
-									<img  src="{{image_entity.url}}" width="200px" height="200px">
+									<img  ng-src="{{image_entity.url}}" width="200px" height="200px">
 								</td>
 							</tr>						
 						</table>

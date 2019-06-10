@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 /**
- * Created by szz on 2018/3/24 16:41.
- * Email szhz186@gmail.com
  * springmvc全局异常处理器
  */
 @RestControllerAdvice

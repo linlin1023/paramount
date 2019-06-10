@@ -6,8 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by szz on 2018/3/24 16:35.
- * Email szhz186@gmail.com
  * 自定义日志注解
  */
 @Target({ElementType.METHOD})

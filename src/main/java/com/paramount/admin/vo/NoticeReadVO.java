@@ -5,7 +5,6 @@ import com.paramount.admin.domain.Notice;
 import java.util.Date;
 
 /**
- * Created by szz on 2018/3/24 0:24.
  */
 public class NoticeReadVO extends Notice{
     private static final long serialVersionUID = -3842182350180882396L;

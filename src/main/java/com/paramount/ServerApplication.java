@@ -14,10 +14,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.http.HttpStatus;
 
-/**
- * Created by szz on 2018/3/23 23:08.
- * Email szhz186@gmail.com
- */
+
 @SpringBootApplication
 @ComponentScan
 //@MapperScan(basePackages = "com.paramount", markerInterface =Mapper.class)

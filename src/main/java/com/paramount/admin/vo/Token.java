@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by szz on 2018/3/25 22:43.
- * Email szhz186@gmail.com
  * 基于RestFul的方式登陆token
  */
 public class Token  implements Serializable{

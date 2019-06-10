@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 import java.util.Map;
 /**
- * Created by szz on 2018/3/23 23:08.
  */
 @Mapper
 public interface WoWorksheetDao {

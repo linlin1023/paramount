@@ -26,6 +26,7 @@ app.controller('contentController' ,function($scope,$controller ,uploadService,c
 	$scope.findOne=function(id){				
 		contentService.findOne(id).success(
 			function(response){
+			    console.log(response);
 				$scope.entity= response;					
 			}
 		);				

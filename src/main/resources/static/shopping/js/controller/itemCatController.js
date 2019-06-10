@@ -23,7 +23,9 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 	}
 	
 	//查询实体 
-	$scope.findOne=function(id){				
+	$scope.findOne=function(id){
+	    if(id == undefined)
+	        return;
 		itemCatService.findOne(id).success(
 			function(response){
 				$scope.entity= response;					
@@ -81,6 +83,8 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 	
 	// 根据父ID查询分类
 	$scope.findByParentId =function(parentId){
+	    if(parentId == undefined)
+	        return;
 		itemCatService.findByParentId(parentId).success(function(response){
 			$scope.list=response;
 		});

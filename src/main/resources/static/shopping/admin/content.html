@@ -63,32 +63,30 @@
 			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 			                      <thead>
 			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)">
-			                              </th> 
-										                               <th class="sorting">{{'100026'|T}}</th>
-                             <th class="sorting">{{'100037'|T}}</th>
-                             <th class="sorting">{{'100027'|T}}</th>
-                             <th class="sorting">{{'100028'|T}}</th>
-                             <th class="sorting">{{'100029'|T}}</th>
-                             <th class="sorting">{{'100030'|T}}</th>
-                             <th class="sorting">{{'100031'|T}}</th>
-								     				
-					                      <th class="text-center">{{'100015'|T}}</th>
+                                              <th class="" style="padding-right:0px">
+                                                  <input id="selall" type="checkbox" class="icheckbox_square-blue" ng-click ="allSelected($event)">
+                                              </th>
+                                             <th class="sorting">{{'100026'|T}}</th>
+                                             <th class="sorting">{{'100037'|T}}</th>
+                                             <th class="sorting">{{'100027'|T}}</th>
+                                             <th class="sorting">{{'100028'|T}}</th>
+                                             <th class="sorting">{{'100029'|T}}</th>
+                                             <th class="sorting">{{'100030'|T}}</th>
+                                             <th class="sorting">{{'100031'|T}}</th>
+                                             <th class="text-center">{{'100015'|T}}</th>
 			                          </tr>
 			                      </thead>
 			                      <tbody>
 			                          <tr ng-repeat="entity in list">
 			                              <td><input  type="checkbox" class="checkbox_io" ng-click="updateSelection($event,entity.id)"></td>
-				                                                       <td>{{entity.id}}</td>			
-                             <td>{{entity.categoryId}}</td>			
-                             <td>{{entity.title}}</td>			
-                             <td>{{entity.url}}</td>			
-                             <td><img src="{{entity.pic}}" width="100" height="50"></td>			
-                             <td>{{status[entity.status]}}</td>			
-                             <td>{{entity.sortOrder}}</td>			
-		                                 
-		                                  <td class="text-center">                                           
+                                          <td>{{entity.id}}</td>
+                                         <td>{{entity.categoryId}}</td>
+                                         <td>{{entity.title}}</td>
+                                         <td>{{entity.url}}</td>
+                                         <td><img ng-src="{{entity.pic}}" width="100" height="50"></td>
+                                         <td>{{status[entity.status]}}</td>
+                                         <td>{{entity.sortOrder}}</td>
+		                                  <td class="text-center">
 		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >{{'100016'|T}}</button>
 		                                  </td>
 			                          </tr>									 

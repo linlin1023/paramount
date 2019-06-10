@@ -3,8 +3,6 @@ package com.paramount.admin.vo;
 import java.io.Serializable;
 
 /**
- * Created by szz on 2018/3/24 16:45.
- * Email szhz186@gmail.com
  */
 public class ResponseInfo implements Serializable{
     private static final long serialVersionUID = -1621001485330685349L;

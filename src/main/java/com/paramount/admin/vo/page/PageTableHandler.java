@@ -6,8 +6,6 @@ import java.util.List;
 /**
  * 分页查询处理器
  *
- * Created by szz on 2018/3/27 12:24.
- * Email szhz186@gmail.com
  */
 public class PageTableHandler {
     private CountHandler countHandler;

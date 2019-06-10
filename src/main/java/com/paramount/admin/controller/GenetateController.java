@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by szz on 2018/4/5 12:19.
- * Email szhz186@gmail.com
  */
 @Api("代码生成")
 @RestController

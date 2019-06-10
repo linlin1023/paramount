@@ -6,8 +6,6 @@ import java.util.List;
 /**
  * 分页查询返回
  *
- * Created by szz on 2018/3/27 12:26.
- * Email szhz186@gmail.com
  */
 public class PageTableResponse implements Serializable {
     private static final long serialVersionUID = -6872424514626251642L;

@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 /**
- * Created by szz on 2018/3/23 23:08.
  */
 @Mapper
 public interface PermissionDao {

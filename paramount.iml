@@ -70,6 +70,7 @@
     <orderEntry type="library" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:21.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.18" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
@@ -172,5 +173,119 @@
     <orderEntry type="library" name="Maven: org.jdom:jdom:1.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.search:func-test:4.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-page-objects:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-it-common:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.plugins:atlassian-dark-features-rest-plugin:0.9.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-api:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.analytics:analytics-api:5.2.20" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.annotations:atlassian-annotations:0.16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.crowd:embedded-crowd-api:2.10.2-rc04" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.event:atlassian-event:3.1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.extras:atlassian-extras-api:3.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.code.findbugs:jsr305:3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hibernate:hibernate-validator:5.2.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-rest-api:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-rest-model:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-test-util:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.activeobjects:activeobjects-test:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.activeobjects:activeobjects-core:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.activeobjects:activeobjects-spi:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.java.dev.activeobjects:activeobjects:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.java.dev.activeobjects:activeobjects-test:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.sal:sal-api:3.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.sal:sal-test-resources:3.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.sal:sal-core:3.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.security:atlassian-secure-utils:3.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.seraph:atlassian-seraph:2.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: opensymphony:oscore:2.2.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.security:atlassian-secure-random:3.2.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.security:atlassian-cookie-tools:3.2.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.sal:sal-spi:3.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.icegreen:greenmail:1.5.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.dbunit:dbunit:2.5.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hibernate:hibernate-core:5.3.9.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: antlr:antlr:2.7.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss:jandex:2.0.5.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.dom4j:dom4j:2.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.4.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.liquibase:liquibase-core:3.6.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:jcl-over-slf4j:1.7.26" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bitbucket.server:bitbucket-util:4.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.fugue:fugue:2.6.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.http:atlassian-http:1.1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.profiling:atlassian-profiling:1.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.util.concurrent:atlassian-util-concurrent:3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.cache:atlassian-cache-api:2.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.instrumentation:atlassian-instrumentation-core:2.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: joda-time:joda-time:2.10.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.janino:janino:3.0.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.janino:commons-compiler:3.0.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.plugins.rest:atlassian-rest-common:3.0.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.ws.rs:jsr311-api:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-core:1.8-atlassian-16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-server:1.8-atlassian-16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-client:1.8-atlassian-16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-json:1.8-atlassian-16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.jettison:jettison:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13-atlassian-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13-atlassian-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.13-atlassian-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.jackson:jackson-xc:1.9.13-atlassian-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path-assert:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.groovy:groovy-all:indy:2.4.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:log4j-over-slf4j:1.7.26" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.confluex:confluex-mock-http:0.4.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mortbay.jetty:jetty:6.1.26" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mortbay.jetty:jetty-util:6.1.26" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.groovy:groovy-all:2.4.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.jwt:jwt-api:1.5.11-0002" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.jwt:jwt-core:1.5.11-0002" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.nimbusds:nimbus-jose-jwt:2.16" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.mail:mail:1.4.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.bouncycastle:bcprov-jdk15on:1.51" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.51" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.httpclient:atlassian-httpclient-api:0.23.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.integration.jira:jira-integration-page-objects:3.0.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.selenium:atlassian-pageobjects-elements:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.selenium:atlassian-pageobjects-api:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.inject:guice:3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.selenium:atlassian-webdriver-core:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.selenium:atlassian-visual-comparison:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.velocity:velocity:1.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: oro:oro:2.0.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-java:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-edge-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-opera-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-support:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.commons:commons-exec:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp3:okhttp:3.10.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okio:okio:1.14.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:atlassian-browsers-auto:2.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:atlassian-browsers-osx:2.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:firefox:osx:44.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:firefox-profile:44.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:chrome:osx:48.0.2564.103" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.browsers:chrome-profile:osx:2.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.jsourcerer.webdriver:JSErrorCollector:0.6-atlassian-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-api:3.14.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.atlassian.bundles:jsr305:1.1" level="project" />
   </component>
 </module>

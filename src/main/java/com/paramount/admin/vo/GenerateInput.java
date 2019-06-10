@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by szz on 2018/4/5 12:25.
- * Email szhz186@gmail.com
  */
 public class GenerateInput implements Serializable{
     private static final long serialVersionUID = -176018527929007186L;

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.paramount.admin.domain.User;
 import com.paramount.shopping.domian.TbUser;
 import com.paramount.shopping.domian.group.Cart;
 import com.paramount.shopping.domian.response.Result;
@@ -35,8 +36,16 @@ public class CartController {
 		String username = null;
 		if(SecurityUtils.getSubject().getPrincipal() == null)
 			username = "anonymousUser";
-		else
-			username = ((TbUser)SecurityUtils.getSubject().getPrincipal() ).getUsername();
+		else{
+			if( SecurityUtils.getSubject().getPrincipal() instanceof TbUser){
+				username = ((TbUser)SecurityUtils.getSubject().getPrincipal() ).getUsername();
+			}else if (SecurityUtils.getSubject().getPrincipal() instanceof User){
+				username = ((User)SecurityUtils.getSubject().getPrincipal() ).getUsername();
+			}
+
+
+		}
+
 		System.out.println("当前登录人："+username);
 		
 		String cartListString = CookieUtil.getCookieValue(request, "cartList", "UTF-8");

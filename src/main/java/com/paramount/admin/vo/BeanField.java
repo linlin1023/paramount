@@ -3,8 +3,6 @@ package com.paramount.admin.vo;
 import java.io.Serializable;
 
 /**
- * Created by szz on 2018/4/5 12:24.
- * Email szhz186@gmail.com
  */
 public class BeanField implements Serializable{
     private static final long serialVersionUID = 3102040362133083037L;

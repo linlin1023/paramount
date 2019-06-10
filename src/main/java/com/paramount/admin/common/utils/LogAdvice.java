@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by szz on 2018/3/24 17:03.
- * Email szhz186@gmail.com
  * 日志处理类
  */
 @Aspect

@@ -18,8 +18,6 @@ import com.google.common.collect.Maps;
 
 /**
  * 分页、查询参数解析
- * Created by szz on 2018/3/27 12:22.
- * Email szhz186@gmail.com
  */
 public class PageTableArgumentResolver implements HandlerMethodArgumentResolver {
 

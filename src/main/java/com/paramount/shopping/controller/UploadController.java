@@ -47,7 +47,7 @@ public class UploadController {
 	@Value("${BUCKET_NAME}")
 	private  String bucketName;
 
-	@RequestMapping(path="/uploadFile", method = RequestMethod.POST)
+	@RequestMapping(path="/uploadFiles", method = RequestMethod.POST)
 	public Result uploadFile( @RequestParam("file") MultipartFile file){
 
 		String url = null;

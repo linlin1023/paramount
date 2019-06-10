@@ -11,6 +11,7 @@ app.service('typeTemplateService',function($http){
 	}
 	//查询实体
 	this.findOne=function(id){
+	    if(id == undefined) return;
 		return $http.get('../typeTemplate/findOne?id='+id);
 	}
 	//增加 
@@ -30,6 +31,7 @@ app.service('typeTemplateService',function($http){
 		return $http.post('../typeTemplate/search?page='+page+"&rows="+rows, searchEntity);
 	}
 	this.findBySpecList=function(id){
+	    if(id == undefined) return;
     	return $http.get('../../shopping/typeTemplate/findBySpecList?id='+id);
     }
     this.selectTypeTemplateOptions = function(){

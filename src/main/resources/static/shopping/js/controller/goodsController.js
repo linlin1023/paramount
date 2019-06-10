@@ -1,6 +1,6 @@
  //控制层 
-app.controller('goodsController' ,function($scope,$controller,$location,typeTemplateService ,itemCatService,uploadService ,goodsService){
-	
+app.controller('goodsController' ,function($scope,$controller,$location,typeTemplateService,itemCatService ,uploadService ,goodsService){
+
 	$controller('baseController',{$scope:$scope});//继承
 	
     //读取列表数据绑定到表单中  
@@ -26,6 +26,9 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	$scope.findOne=function(){	
 		var id = $location.search()['id'];
 		// alert(id);
+		if(id == undefined){
+		    return ;
+		}
 		goodsService.findOne(id).success(
 			function(response){
 				$scope.entity= response;	
@@ -151,35 +154,40 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	
 	// 查询二级分类列表:
 	$scope.$watch("entity.goods.category1Id",function(newValue,oldValue){
+	    if(newValue == undefined) return;
 		itemCatService.findByParentId(newValue).success(function(response){
-			$scope.itemCat2List = response;
-			$scope.itemCat3List = null;
-		});
+                $scope.itemCat2List = response;
+                $scope.itemCat3List = null;
+            });
 	});
 	
 	// 查询三级分类列表:
 	$scope.$watch("entity.goods.category2Id",function(newValue,oldValue){
+	    if(newValue == undefined) return;
 		itemCatService.findByParentId(newValue).success(function(response){
-			$scope.itemCat3List = response;
-		});
+			        $scope.itemCat3List = response;
+		        });
 	});
 	
 	// 查询模块ID
 	$scope.$watch("entity.goods.category1Id",function(newValue,oldValue){
+	    if(newValue == undefined) return;
 		itemCatService.findOne(newValue).success(function(response){
-			$scope.entity.goods.typeTemplateId = response.typeId;
-		});
+			            $scope.entity.goods.typeTemplateId = response.typeId;
+		                });
 	});
 
 	// 查询模块ID
     	$scope.$watch("entity.goods.category2Id",function(newValue,oldValue){
+    	    if(newValue == undefined) return;
     		itemCatService.findOne(newValue).success(function(response){
-    			$scope.entity.goods.typeTemplateId = response.typeId;
-    		});
+    			    $scope.entity.goods.typeTemplateId = response.typeId;
+    		    });
     	});
 
     	// 查询模块ID
         	$scope.$watch("entity.goods.category3Id",function(newValue,oldValue){
+        	    if(newValue == undefined) return;
         		itemCatService.findOne(newValue).success(function(response){
         			$scope.entity.goods.typeTemplateId = response.typeId;
         		});
@@ -189,6 +197,8 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
 	// 查询模板下的品牌列表:
 	$scope.$watch("entity.goods.typeTemplateId",function(newValue,oldValue){
 		// 根据模板ID查询模板的数据
+		if(newValue == undefined)
+		    return;
 		typeTemplateService.findOne(newValue).success(function(response){
 			$scope.typeTemplate = response;
 			// 将品牌的字符串数据转成JSON

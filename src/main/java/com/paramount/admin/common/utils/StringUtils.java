@@ -5,8 +5,6 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 /**
- * Created by szz on 2018/4/5 13:19.
- * Email szhz186@gmail.com
  */
 public class StringUtils {
 

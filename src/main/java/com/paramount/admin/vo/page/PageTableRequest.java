@@ -6,8 +6,6 @@ import java.util.Map;
 /**
  * 分页查询参数
  *
- * Created by szz on 2018/3/27 12:25.
- * Email szhz186@gmail.com
  */
 public class PageTableRequest implements Serializable{
 
