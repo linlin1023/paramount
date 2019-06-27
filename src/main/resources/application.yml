@@ -37,9 +37,11 @@ spring:
     testOnBorrow: true
   mail:
     default-encoding: UTF-8
-    host: smtp.163.com
-    username: 17673125001
-    password: gentoo111
+    host: smtp.office365.com
+    port: 587
+    auth: true
+    username: support@paramountmerchandise.co.nz
+    password: Welcome2017!
     protocol: smtp
     test-connection: false
   data:
@@ -65,7 +67,12 @@ token:
   expire:
     seconds: 86400
 server:
-  port: 9000
+  port: 9000 #http1.1
+
+
+    #keytool -genkey -v -keystore paramount.keystore -alias paramount -keyalg RSA -validity 20000 -keystore ~/Desktop/paramount.keystore
+
+
 # PageHelper
 pagehelper:
   helperDialect: mysql

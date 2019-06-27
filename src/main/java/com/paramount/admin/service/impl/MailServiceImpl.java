@@ -49,7 +49,7 @@ public class MailServiceImpl implements MailService{
             try {
                 sendMailSevice.sendMail(u, mail.getSubject(), mail.getContent());
             } catch (Exception e) {
-                log.error("发送邮件失败", e);
+                log.error("mail send failed ", e);
                 status = 0;
             }
 
@@ -72,14 +72,14 @@ public class MailServiceImpl implements MailService{
         Folder folder = store.getFolder("INBOX");
         folder.open(Folder.READ_ONLY);
         Message message[] = folder.getMessages();
-        System.out.println("邮件的数量为: " + message.length);
+        System.out.println("mail number is : " + message.length);
         ReciveOneMail pmm = null;
         for (int i = 0; i < message.length; i++) {
             System.out.println("======================");
             pmm = new ReciveOneMail((MimeMessage) message[i]);
             //判断邮件没有被处理过才继续读,如果已经处理过就直接返回
             //只处理近三天之内的邮件
-            System.out.println("该邮件的发送日期为:"+pmm.getSendDateSF());
+            System.out.println("the date of the mail :"+pmm.getSendDateSF());
 
 
             //通知客户,邮件已经被接收,等待处理
@@ -88,7 +88,7 @@ public class MailServiceImpl implements MailService{
             mail.setSubject(pmm.getSubject());
             //给发件人回复邮件
             mail.setToUsers(pmm.getFrom());
-            mail.setContent("此邮件为系统自动发送,不需回复!请求已由系统自动接收,请等待工作人员处理!");
+            mail.setContent("This mail is sent automatically, you do not have need to reply!your request is accepted by out system, our Support will process it later!");
 
             mail.setCreateTime(pmm.getSendDateSF());
             mail.setUpdateTime(pmm.getSendDateSF());
@@ -96,7 +96,7 @@ public class MailServiceImpl implements MailService{
             //处理收件人列表
             String toUsers = mail.getToUsers().trim();
             if (StringUtils.isBlank(toUsers)) {
-                throw new IllegalArgumentException("收件人不能为空");
+                throw new IllegalArgumentException("The receiver should not be empty");
             }
 
             toUsers = StringUtils.substringBetween(toUsers, "<", ">");
@@ -115,9 +115,9 @@ public class MailServiceImpl implements MailService{
             toUser.forEach(u -> {
                 int status = 1;
                 try {
-                    sendMailSevice.sendMail(u,"回复:"+ mail.getSubject(), mail.getContent());
+                    sendMailSevice.sendMail(u,"reply:"+ mail.getSubject(), mail.getContent());
                 } catch (Exception e) {
-                    log.error("发送邮件失败", e);
+                    log.error("send mail failed", e);
                     status = 0;
                 }
 

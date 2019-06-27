@@ -39,6 +39,13 @@
 
     <dependencies>
 
+        <!--twilio message service  -->
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>7.39.0</version>
+        </dependency>
+
         <!--solr-->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -73,7 +80,6 @@
         </dependency>
 
         <!-- 后续整合es -->
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,6 +134,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+           <!-- <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -270,6 +282,13 @@
                 <version>1.2.46</version>
             </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.2</version>
+        </dependency>
+
 
 
         <dependency>
@@ -293,6 +312,11 @@
             <version>4.0.0</version>
             <scope>test</scope>
         </dependency>
+   <!--     <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>-->
+
 
 
     </dependencies>

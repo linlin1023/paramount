@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login</title>
+        <title>Register</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,7 +30,6 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body ng-app="pinyougou" ng-controller = "usersController">
-
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -52,8 +51,8 @@
 								<ul>
 									<li class="slide-toggle"><a href="#"><i class="fa fa-user"></i> My Account</a>
 										<ul class="show-toggle">
-											<li><a href="register.html">register</a></li>
-											<li><a href="login.html">login</a></li>
+											<li><a href="#">register</a></li>
+											<li><a href="#">login</a></li>	
 										</ul>
 									</li>
 								</ul>
@@ -392,7 +391,7 @@
 			<div class="container">
 				<ol class="breadcrumb">
 				  <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-				  <li class="active">Login</li>
+				  <li class="active">Register</li>
 				</ol>			
 			</div>
 		</div>
@@ -401,38 +400,31 @@
 		<div class="account-area pt-30 log">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-6 col-sm-6">
-						<div class="account-info pb-30">
-							<form action="#">
-								<div class="form-fields">
-									<h2>Login</h2>
-									<p>
-										<label>
-											Username or email address
-											<span class="required">*  {{usernameMessage}}</span>
-										</label>
-										<input type="text" ng-model="username">
-									</p>
-									<p>
-										<label>
-											Password
-											<span class="required">* {{passwordMessage}}</span>
-										</label>
-										<input type="password" ng-model="password">
-									</p>
-								</div>
-								<div class="form-action">
-									<label>
-									<a href="#" class="lost_password">Lost your password?</a>								
-										<input type="checkbox" style="height:30px; margin-top:4px;">
-										Remember me
-									</label>								
-									<button value="Login" type="submit" ng-click="login(this)" class="btnlogin">Submit</button>
-								</div>
-							</form>
+					<div class="col-md-6 col-lg-6 col-sm-6" id="centre">
+						<div class="form-fields pb-30">
+							<h2>Register</h2>
+							<p>
+								<label>Username  <span class="required">*</span></label>
+								<input type="text" ng-model="user.username" required ng-minlength="3"/>
+							</p>
+							<p>
+								<label>Email address  <span class="required">*</span></label>
+								<input type="text" ng-model="user.email"  required ng-pattern="/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/" >
+							</p>
+							<p>
+								<label>Password <span class="required">*</span></label>
+								<input type="password" ng-model="user.password"  required >
+							</p>
+							<p>
+								<label>Phone  <span class="required">*</span></label>
+								<input type="text" ng-model="user.phone" required  >
+							</p>
+
+						</div>
+						<div class="form-action floatright" id="registerbutton">
+                            <input value="Register" type="button" ng-click="userRegister()" style="color: #fff; background:#000">
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -722,6 +714,7 @@
 		<!-- main.js -->
         <script src="js/main.js"></script>
 
+
 		<script type="text/javascript" src="js/angularjs/angular.min.js"></script>
 		<script type="text/javascript" src="js/base.js"></script>
 		<script type="text/javascript" src="js/controller/baseController.js"></script>
@@ -729,7 +722,9 @@
 		<script type="text/javascript" src="js/service/usersService.js"></script>
 		<script type="text/javascript" src="js/service/uploadService.js"></script>
 
-		<script type="text/javascript" src="js/service/cartService.js"></script>
-    </body>
+        <script type="text/javascript" src="js/service/cartService.js"></script>
+
+
+	</body>
 </html>
 

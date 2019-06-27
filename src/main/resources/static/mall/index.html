@@ -31,7 +31,7 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body ng-app="pinyougou" ng-controller = "itemController"  ng-init="findAll();findNewArrival();findTopSeller(15);findAllAdvertisement();findCartList()">
+<body ng-app="pinyougou" ng-controller = "itemController"  ng-init="findAll();findNewArrival();findTopSeller(15);findAllAdvertisement();findCartList();checkUserLogin()">
 
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -56,6 +56,10 @@
 									<li><a href="register.html">register</a></li>
 									<li><a href="login.html">login</a></li>
 								</ul>
+							</li>
+						</ul>
+						<ul ng-if = "usernameLogin != null" >
+							<li class="slide-toggle"><a href="#"><i class="fa fa-user"></i> {{usernameLogin}}</a>
 							</li>
 						</ul>
 						<ul>
@@ -301,7 +305,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.first.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.first.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>					
@@ -331,7 +335,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.second.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.second.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -361,7 +365,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.third.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.third.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -391,7 +395,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.fourth.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.fourth.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -421,7 +425,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.fifth.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.fifth.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 									</div>
 								</div>
@@ -462,7 +466,7 @@
 								</div>
 								<div class="product-icon">
 									<div class="product-icon-left f-left">
-										<a ng-click="saveToCartList({{specialProduct.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+										<a ng-click="saveToCartList(specialProduct.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 									</div>
 									<div class="product-icon-right floatright">
 										<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -570,7 +574,7 @@
 								</div>
 								<div class="product-icon">
 									<div class="product-icon-left f-left">
-										<a ng-click="saveToCartList({{entity.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+										<a ng-click="saveToCartList(entity.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 									</div>
 									<div class="product-icon-right floatright">
 										<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -628,7 +632,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<a ng-click="saveToCartList({{pair.first.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+											<a ng-click="saveToCartList(pair.first.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
 										</div>
 										<div class="product-icon-right floatright">
 											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -664,7 +668,7 @@
 									</div>
 									<div class="product-icon">
 										<div class="product-icon-left f-left">
-											<button ng-click="saveToCartList({{pair.second.id}},1)"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+											<button ng-click="saveToCartList(pair.second.id,1)"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
 										</div>
 										<div class="product-icon-right floatright">
 											<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>

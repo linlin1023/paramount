@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.embedded.undertow.UndertowBuilderCustomizer;
+import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +21,7 @@ import org.springframework.http.HttpStatus;
 @SpringBootApplication
 @ComponentScan
 //@MapperScan(basePackages = "com.paramount", markerInterface =Mapper.class)
-public class ServerApplication {
+public class ServerApplication /*implements  WebServerFactoryCustomizer*/{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
@@ -58,4 +61,10 @@ public class ServerApplication {
 
 
 
+/*	@Override
+	public void customize(WebServerFactory factory) {
+		UndertowServletWebServerFactory undertowFactory = (UndertowServletWebServerFactory)factory;
+		undertowFactory.addBuilderCustomizers((UndertowBuilderCustomizer) builder -> { builder.addHttpListener(8080, "0.0.0.0"); });
+
+	}*/
 }

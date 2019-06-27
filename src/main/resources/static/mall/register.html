@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login</title>
+        <title>Register</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,9 +29,7 @@
         <link rel="stylesheet" href="css/responsive.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
-         
-
+    <body ng-app="pinyougou" ng-controller = "usersController">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -53,8 +51,8 @@
 								<ul>
 									<li class="slide-toggle"><a href="#"><i class="fa fa-user"></i> My Account</a>
 										<ul class="show-toggle">
-											<li><a href="#">register</a></li>
-											<li><a href="#">login</a></li>	
+											<li><a href="register.html">register</a></li>
+											<li><a href="login.html">login</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -393,7 +391,7 @@
 			<div class="container">
 				<ol class="breadcrumb">
 				  <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-				  <li class="active">Login</li>
+				  <li class="active">Register</li>
 				</ol>			
 			</div>
 		</div>
@@ -402,51 +400,38 @@
 		<div class="account-area pt-30 log">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-6 col-sm-6">
-						<div class="account-info pb-30">
-							<form action="#">
-								<div class="form-fields">
-									<h2>Login</h2>
-									<p>
-										<label>
-											Username or email address
-											<span class="required">*</span>
-										</label>
-										<input type="text">
-									</p>
-									<p>
-										<label>
-											Password
-											<span class="required">*</span>
-										</label>
-										<input type="password">
-									</p>
-								</div>
-								<div class="form-action">
-									<label>
-									<a href="#" class="lost_password">Lost your password?</a>								
-										<input type="checkbox">
-										Remember me
-									</label>								
-									<input value="Login" type="submit">
-								</div>								
-							</form>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-6 col-sm-6">
+					<div class="col-md-6 col-lg-6 col-sm-6" id="centre">
 						<div class="form-fields pb-30">
 							<h2>Register</h2>
 							<p>
-								<label>Email address  <span class="required">*</span></label>
-								<input type="text">
+								<label>Username  <span class="required">*</span></label>
+								<input type="text" ng-model="user.username" />
 							</p>
 							<p>
-								<label>Password <span class="required">*</span></label>
-								<input type="password">
+								<label>Email address  <span class="required">*  {{emailErrorMessage}}</span></label>
+								<input type="text" ng-model="user.email" id="emailinput"> <button type="button" ng-click="verifyEmail()">Verify</button>
 							</p>
+                            <p>
+                                <label>Email Verification Code  <span class="required">*  {{emailVerificationCodeMessage}}</span> </label>
+                                <input type="text" ng-model="emailVerificationCode" >
+                            </p>
+							<p>
+								<label>Password <span class="required">*</span></label>
+								<input type="password" ng-model="user.password"  >
+							</p>
+							<p>
+								<label>Phone  <span class="required">*  {{phoneErrorMessage}}</span> </label>
+								<input type="text" ng-model="user.phone" id="phoneinput"> <button type="button" ng-click="verifyPhone()">Verify</button>
+							</p>
+                            <p>
+                                <label>Phone Verification Code  <span class="required">*  {{phoneVerificationCodeMessage}}</span></label>
+                                <input type="text" ng-model="phoneVerificationCode" >
+                            </p>
+
 						</div>
-						<div class="form-action floatright">
-							<input value="Register" type="submit">
+                        <div><span class="required"> {{messageForSave}}</span></div>
+						<div class="form-action floatright" id="registerbutton">
+                            <input value="Register" type="button" ng-click="userRegister()" style="color: #fff; background:#000">
 						</div>
 					</div>
 				</div>
@@ -737,6 +722,18 @@
         <script src="js/plugins.js"></script>
 		<!-- main.js -->
         <script src="js/main.js"></script>
-    </body>
+
+
+		<script type="text/javascript" src="js/angularjs/angular.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/controller/baseController.js"></script>
+		<script type="text/javascript" src="js/controller/usersController.js"></script>
+		<script type="text/javascript" src="js/service/usersService.js"></script>
+		<script type="text/javascript" src="js/service/uploadService.js"></script>
+
+        <script type="text/javascript" src="js/service/cartService.js"></script>
+
+
+	</body>
 </html>
 

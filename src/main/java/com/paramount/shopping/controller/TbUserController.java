@@ -62,4 +62,5 @@ public class TbUserController {
             return new Result(false, "delete failed");
         }
     }
+
 }

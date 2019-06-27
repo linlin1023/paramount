@@ -42,13 +42,12 @@ public class SendMailSeviceImpl implements SendMailSevice {
 	@Override
 	public void sendMail(String toUser, String subject, String text) throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
-		//网易邮箱的554 DT:SPM真的是巨坑天坑神坑！！！此行的含义为发邮件前先给自己抄送一份
-		message.addRecipients(MimeMessage.RecipientType.CC,InternetAddress.parse("17673125001@163.com"));
+		message.addRecipients(MimeMessage.RecipientType.TO,InternetAddress.parse(toUser));
 		MimeMessageHelper helper = new MimeMessageHelper(message, true);
 		helper.setFrom(serverMail);
 		helper.setTo(toUser);
 		helper.setSubject(subject);
-		helper.setText(text, true);
+		helper.setText(text);
 
 		javaMailSender.send(message);
 	}

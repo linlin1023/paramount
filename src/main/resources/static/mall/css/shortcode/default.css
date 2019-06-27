@@ -34,6 +34,26 @@ Please do not change anything here! write in a custom.css file if required!
 /*************************
     General
 *************************/
+.btnlogin{
+    background: #252525 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #fff;
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-shadow: none;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    width: 100px;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;

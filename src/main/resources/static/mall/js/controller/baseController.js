@@ -17,6 +17,10 @@ app.controller("baseController",function($scope,cartService){
 	}
 
 
+    $scope.checkUserLogin = function(){
+        $scope.usernameLogin = sessionStorage.getItem("username");
+        $scope.emailLogin = sessionStorage.getItem("email");
+    }
 
     // 定义方法：获取JSON字符串中的某个key对应值的集合
     	$scope.jsonToString = function(jsonStr,key){
