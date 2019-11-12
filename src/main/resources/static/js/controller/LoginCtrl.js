@@ -18,7 +18,7 @@
                                        				url : '/sys/login',
                                        				data : $("#login-form").serialize(),
                                        				success : function() {
-                                       					location.href = '/';
+                                       					location.href = '/shopping/admin/index.html';
                                        				},
                                        				error : function(xhr, textStatus, errorThrown) {
                                        					var msg = xhr.responseText;

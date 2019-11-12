@@ -6,11 +6,12 @@ import com.paramount.shopping.domian.response.PageResult;
 import com.paramount.shopping.domian.response.Result;
 import com.paramount.shopping.service.TbUserService;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Log4j
+@Slf4j
 @RequestMapping("/shopping/tbuser")
 public class TbUserController {
 
