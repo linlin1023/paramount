@@ -69,6 +69,7 @@ public class UploadController {
 			logger.debug("Object：" + namekey + "save into OSS successfully。");
 			Date expiration = new Date(System.currentTimeMillis() + 3600L * 1000 * 24 * 365 * 10);
 			URL urlGenerated = ossClient.generatePresignedUrl(bucketName, namekey, expiration);
+
 			if (urlGenerated != null)
 				url = urlGenerated.toString();
 			logger.info("Completed with url : {}", url);
